@@ -193,7 +193,7 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
           "EDA on Beijing Wanshouxigong station data (2013–2017): PM2.5 trends, seasonality, pollutant correlations. Shipped as a live Streamlit dashboard.",
         tags: ["Pandas", "Streamlit", "EDA"],
         demo: { label: "Live demo — https://submission-air-quality.streamlit.app/", href: "https://submission-air-quality.streamlit.app/" },
-        repo: { label: "github.com/leesnar/submission-proyek-analisis-data", href: "https://github.com/leesnar/submission-proyek-analisis-data" },
+        repo: { label: "github.com/leesnar/proyek-analisis-data", href: "https://github.com/leesnar/proyek-analisis-data" },
       },
       {
         title: "Movie Recommendation System",
