@@ -3,6 +3,7 @@ import { Avatar } from "../Avatar";
 import { ContactList } from "../ContactList";
 import { Reveal } from "../ui/Reveal";
 import { HERO } from "../../data/content";
+import { asset } from "../../lib/asset";
 
 export function Closing() {
   return (
@@ -26,7 +27,7 @@ export function Closing() {
         </div>
         <div className="closing__aside">
           <Reveal delay={0.1}>
-            <Avatar monogram="LT" src="/assets/lesnar-portrait.png" label="Portrait of Lesnar Tambun" />
+            <Avatar monogram="LT" src={asset("/assets/lesnar-portrait.png")} label="Portrait of Lesnar Tambun" />
           </Reveal>
         </div>
       </Container>

@@ -13,6 +13,7 @@ import { Reveal } from "../ui/Reveal";
 import { TiltOnScroll } from "../ui/TiltOnScroll";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { CS1_PIPELINE, CS1_EVAL_STATS } from "../../data/content";
+import { asset } from "../../lib/asset";
 
 function ShapLegend() {
   return (
@@ -44,7 +45,7 @@ export function CaseStudyOne() {
           <h4>SHAP global feature importance</h4>
           <PlaceholderAsset
             label={"placeholder\nchart export"}
-            src="/assets/shap-summary.png"
+            src={asset("/assets/shap-summary.png")}
             alt="SHAP summary plot — global feature importance for the heart-disease model"
           />
         </TiltOnScroll>
@@ -52,7 +53,7 @@ export function CaseStudyOne() {
           <h4>Jaccard stability comparison</h4>
           <PlaceholderAsset
             label={"placeholder\nchart export"}
-            src="/assets/jaccard-bar.png"
+            src={asset("/assets/jaccard-bar.png")}
             alt="Mean Jaccard stability of XAI explanations — SHAP 0.7184 vs LIME 0.6103"
           />
         </TiltOnScroll>
@@ -189,7 +190,7 @@ export function CaseStudyOne() {
                 <h4 style={{ margin: "0 0 14px", fontSize: "0.9rem", fontWeight: 600 }}>Validation journey diagram</h4>
                 <PlaceholderAsset
                   label={"placeholder\nvalidation journey diagram\nadd asset"}
-                  src="/assets/validation-journey.png"
+                  src={asset("/assets/validation-journey.png")}
                   alt="XAI implementation and multi-layer validation flow: SHAP/LIME → stability, semantic, and clinical review → final artifact"
                   style={{ minHeight: 360 }}
                 />
@@ -259,7 +260,7 @@ export function CaseStudyOne() {
                 <h4 style={{ margin: "0 0 14px", fontSize: "0.9rem", fontWeight: 600 }}>Anti-leakage pipeline sketch</h4>
                 <PlaceholderAsset
                   label={"placeholder\npipeline sketch / diagram\nadd asset"}
-                  src="/assets/pipeline-preprocessing.png"
+                  src={asset("/assets/pipeline-preprocessing.png")}
                   alt="Anti-leakage imblearn pipeline: split → ColumnTransformer (numeric/categorical) → SMOTE in-fold → model → refit"
                   style={{ minHeight: 300, maxWidth: 420 }}
                 />
@@ -365,7 +366,7 @@ export function CaseStudyOne() {
               <h4 style={{ margin: "0 0 12px", fontSize: "0.9rem", fontWeight: 600 }}>Model comparison chart</h4>
               <PlaceholderAsset
                 label={"placeholder — RF vs XGBoost metric chart · add asset"}
-                src="/assets/roc-comparison.png"
+                src={asset("/assets/roc-comparison.png")}
                 alt="ROC curves comparing Random Forest (AUC 0.9405) and XGBoost (AUC 0.9156)"
                 style={{ minHeight: 320, maxWidth: 620 }}
               />
@@ -419,7 +420,7 @@ export function CaseStudyOne() {
               <h4>SHAP Global Feature Importance</h4>
               <PlaceholderAsset
                 label={"placeholder\nplot export · add asset"}
-                src="/assets/shap-bar.png"
+                src={asset("/assets/shap-bar.png")}
                 alt="SHAP mean absolute feature importance bar chart"
               />
               <ShapLegend />
@@ -429,7 +430,7 @@ export function CaseStudyOne() {
               <p className="sub">local explanation, per-patient</p>
               <PlaceholderAsset
                 label={"placeholder\nplot export · add asset"}
-                src="/assets/shap-waterfall.png"
+                src={asset("/assets/shap-waterfall.png")}
                 alt="SHAP waterfall plot showing per-feature contributions for a single patient"
               />
               <ShapLegend />
@@ -439,7 +440,7 @@ export function CaseStudyOne() {
               <p className="sub">rule-based</p>
               <PlaceholderAsset
                 label={"placeholder\nplot export · add asset"}
-                src="/assets/lime-local.png"
+                src={asset("/assets/lime-local.png")}
                 alt="LIME local explanation with rule-based feature contributions for a single patient"
               />
             </Reveal>
@@ -453,7 +454,7 @@ export function CaseStudyOne() {
               <p className="sub">SHAP vs LIME</p>
               <PlaceholderAsset
                 label={"placeholder\nchart export · add asset"}
-                src="/assets/stability-boxplot.png"
+                src={asset("/assets/stability-boxplot.png")}
                 alt="Boxplot comparing Jaccard stability of SHAP vs LIME explanations across 20 patients"
                 style={{ minHeight: 320 }}
               />
@@ -462,7 +463,7 @@ export function CaseStudyOne() {
               <h4>Domain Expert Review Summary</h4>
               <PlaceholderAsset
                 label={"placeholder\nreview summary · add asset"}
-                src="/assets/domain-expert.png"
+                src={asset("/assets/domain-expert.png")}
                 alt="Domain-expert validation sheet (Lembar Validasi Ahli Domain) reviewed by a biomedical specialist"
                 style={{ minHeight: 340 }}
               />
@@ -471,7 +472,7 @@ export function CaseStudyOne() {
               <h4>GPT-4 Semantic Alignment Scorecard</h4>
               <PlaceholderAsset
                 label={"placeholder\nscorecard export · add asset"}
-                src="/assets/layer2-summary.png"
+                src={asset("/assets/layer2-summary.png")}
                 alt="GPT-4 semantic alignment batch summary: per-patient alignment scores and feature plausibility"
                 style={{ minHeight: 340 }}
               />

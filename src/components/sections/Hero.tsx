@@ -4,6 +4,7 @@ import { Reveal } from "../ui/Reveal";
 import { Doodle } from "../ui/Doodle";
 import { DoodleArrow, DoodleSwirl } from "../icons/Icons";
 import { HERO } from "../../data/content";
+import { asset } from "../../lib/asset";
 
 export function Hero() {
   return (
@@ -28,7 +29,7 @@ export function Hero() {
 
         <div className="hero__portrait" aria-hidden>
           <div className="hero__portrait-circle" />
-          <img src="/assets/lesnar-portrait.png" alt="" className="hero__portrait-photo" />
+          <img src={asset("/assets/lesnar-portrait.png")} alt="" className="hero__portrait-photo" />
         </div>
 
         <Reveal className="hero__quote" delay={0.24}>

@@ -11,6 +11,7 @@ import { StatGrid } from "../StatGrid";
 import { TagRow } from "../TagRow";
 import { Reveal } from "../ui/Reveal";
 import { CS2_EXEC_STATS, CS2_DATA_FLOW, CS2_BUILD_STATS } from "../../data/content";
+import { asset } from "../../lib/asset";
 
 export function CaseStudyTwo() {
   return (
@@ -25,7 +26,7 @@ export function CaseStudyTwo() {
         <MockupFrame url>
           <PlaceholderAsset
             label={"placeholder\nLooker Studio dashboard screenshot\nadd asset"}
-            src="/assets/dash-executive.png"
+            src={asset("/assets/dash-executive.png")}
             alt="Network Intrusion Detection dashboard — Executive Overview in Looker Studio"
             style={{ minHeight: 360 }}
           />
@@ -169,7 +170,7 @@ export function CaseStudyTwo() {
               <MockupFrame label="Executive Overview">
                 <PlaceholderAsset
                   label={"placeholder\nExecutive Overview page\nadd asset"}
-                  src="/assets/dash-executive.jpg"
+                  src={asset("/assets/dash-executive.jpg")}
                   alt="Executive Overview dashboard page — total traffic, anomaly traffic, average risk score, security health index"
                   style={{ minHeight: 300 }}
                 />
@@ -179,7 +180,7 @@ export function CaseStudyTwo() {
               <MockupFrame label="Traffic Analysis">
                 <PlaceholderAsset
                   label={"placeholder\nTraffic Analysis page\nadd asset"}
-                  src="/assets/dash-traffic.jpg"
+                  src={asset("/assets/dash-traffic.jpg")}
                   alt="Traffic Analysis dashboard page — protocol and flag distribution, protocol priority, top services"
                   style={{ minHeight: 300 }}
                 />
@@ -191,7 +192,7 @@ export function CaseStudyTwo() {
               <MockupFrame label="ML & Threat Analysis">
                 <PlaceholderAsset
                   label={"placeholder\nML & Threat Analysis page\nadd asset"}
-                  src="/assets/dash-ml-threat.jpg"
+                  src={asset("/assets/dash-ml-threat.jpg")}
                   alt="ML & Threat Analysis dashboard page — model metrics (99.80% accuracy), model comparison, feature importance, risk score distribution"
                   style={{ minHeight: 420 }}
                 />
@@ -202,7 +203,7 @@ export function CaseStudyTwo() {
             <StepFlow steps={CS2_DATA_FLOW} six />
             <PlaceholderAsset
               label={"placeholder — data flow diagram export · add asset"}
-              src="/assets/data-flow.png"
+              src={asset("/assets/data-flow.png")}
               alt="Project data flow: onboarding, dataset assessment, preprocessing, EDA, visualization, modeling/risk scoring, insight, recommendation, handover"
               style={{ minHeight: 320, marginTop: 24, maxWidth: 560 }}
             />
@@ -244,7 +245,7 @@ export function CaseStudyTwo() {
             <Reveal delay={0.08}>
               <MockupFrame dark dots={false} label="intrusion_detection.ipynb">
                 <PlaceholderAsset label={"placeholder\nJupyter notebook screenshot\nadd asset"} 
-                src="/assets/intrusion_detection.png"
+                src={asset("/assets/intrusion_detection.png")}
                 style={{ minHeight: 440 }} />
               </MockupFrame>
             </Reveal>
@@ -261,7 +262,7 @@ export function CaseStudyTwo() {
               <MockupFrame url>
                 <PlaceholderAsset
                   label={"placeholder\npublished dashboard screenshot\nadd asset"}
-                  src="/assets/dash-executive.jpg"
+                  src={asset("/assets/dash-executive.jpg")}
                   alt="Published Network Intrusion Detection dashboard in Looker Studio"
                   style={{ minHeight: 420 }}
                 />

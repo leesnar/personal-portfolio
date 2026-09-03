@@ -4,6 +4,8 @@
  * Repeated, array-shaped content (stats, pipeline steps, projects) lives here
  * so new entries can be added without touching component markup.
  */
+import { asset } from "../lib/asset";
+
 
 export type StatItem = { value: string; label: string };
 export type StepItem = { n: string; title: string; body?: string; variant?: "soft" | "solid" };
@@ -60,7 +62,7 @@ export const TEASERS: Teaser[] = [
     blurb:
       "a research framework that audits SHAP and LIME explanations instead of trusting them blindly — combining stability testing, LLM-based semantic validation, and clinician review for heart disease classification.",
     ph: "placeholder — SHAP summary plot\nadd asset",
-    src: "/assets/xai-framework-card-asset.png",
+    src: asset("/assets/xai-framework-card-asset.png"),
     alt: "SHAP summary plot for the heart-disease XAI model",
   },
   {
@@ -68,7 +70,7 @@ export const TEASERS: Teaser[] = [
     blurb:
       "a machine learning system that turns 47,700 raw network logs into a prioritized threat dashboard — cutting the security team’s actionable alert queue by 98%.",
     ph: "placeholder — Looker Studio dashboard\nadd asset",
-    src: "/assets/network-intrusion-card-asset.png",
+    src: asset("/assets/network-intrusion-card-asset.png"),
     alt: "Network intrusion detection threat dashboard in Looker Studio",
   },
 ];
