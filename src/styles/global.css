@@ -1,0 +1,521 @@
+@import "./tokens.css";
+
+/* ==========================================================================
+   Lesnar Tambun — AI/ML Engineer & Data Engineer · Portfolio
+   Ported from the original styles.css. Palette, typography, spacing and every
+   component rule are preserved verbatim; only three hooks changed for the
+   React/Framer Motion layer:
+     · the vanilla `.js .reveal` flip is replaced by <Reveal> (Framer Motion)
+     · mask-image icons became inline <Icon> SVGs (.icon)
+     · a few base transforms (float cards, tilt sheet) are now motion-driven
+   ========================================================================== */
+
+/* ----- Reset / base ------------------------------------------------------ */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--ff);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: var(--blue-600); text-decoration: none; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--blue-500); outline-offset: 3px; border-radius: 4px; }
+
+/* ----- Lenis smooth scroll ----------------------------------------------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ----- Layout helpers ---------------------------------------------------- */
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--pad-x); }
+.section { padding-block: clamp(48px, 7vw, 84px); }
+.section--soft  { background: var(--bg-soft); }
+.section--panel { background: var(--bg-panel); }
+.stack { display: flex; flex-direction: column; }
+.hidden-a11y { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Section head: number + title (mirrors 01 / Project Overview) */
+.section-head { display: flex; flex-direction: column; gap: 6px; margin-bottom: clamp(24px, 4vw, 44px); }
+.section-head .num { font-size: 1.5rem; font-weight: 500; color: var(--blue-500); }
+.section-head h2, .section-head h3 { margin: 0; font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 600; line-height: 1.15; }
+.kicker { font-style: italic; font-weight: 600; font-size: clamp(1.15rem, 2.4vw, 1.5rem); color: var(--ink); margin: 0 0 20px; }
+.eyebrow { font-size: 1.25rem; font-weight: 500; color: var(--blue-500); }
+
+/* Two-column: sticky-ish left label, right content (Overview / Solution / Conclusion) */
+/* design: label band 67→527, content 582→1361 of a 1266 content box */
+.split { display: grid; grid-template-columns: 0.4fr 0.6fr; gap: clamp(24px, 4vw, 55px); align-items: start; }
+.split__aside .num { display: block; font-size: 1.5rem; font-weight: 500; color: var(--blue-500); margin-bottom: 8px; }
+.split__aside h2, .split__aside h3 { margin: 0; font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 600; line-height: 1.15; }
+.field { display: flex; flex-direction: column; gap: 10px; }
+.field + .field { margin-top: 26px; }
+/* CS1 "05 Ideate" places its two fields side by side rather than stacked */
+.ideate-pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2.5vw, 31px); align-items: start; }
+.ideate-pair .field + .field { margin-top: 0; }
+.field__label { font-style: italic; font-weight: 600; font-size: 1.25rem; color: var(--ink); }
+.body { font-size: 1rem; font-weight: 500; color: var(--muted); }
+.body--justify { text-align: justify; }
+.body strong { color: var(--ink); font-weight: 600; }
+
+/* ----- Top navigation ---------------------------------------------------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
+.nav__brand { font-weight: 600; font-size: 1.05rem; color: var(--ink); background: none; border: 0; cursor: pointer; font-family: inherit; padding: 0; letter-spacing: inherit; }
+.nav__brand span { color: var(--blue-600); }
+.nav__links { display: flex; gap: clamp(10px, 2vw, 26px); flex-wrap: wrap; }
+.nav__links a { position: relative; font-weight: 500; font-size: 0.95rem; color: var(--muted); }
+.nav__links a:hover { color: var(--ink); }
+.nav__links a.is-active { color: var(--ink); }
+/* scroll-spy underline */
+.nav__links a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
+  background: var(--blue-600); border-radius: 2px; transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+.nav__links a.is-active::after { transform: scaleX(1); }
+/* scroll progress bar */
+.nav__progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; transform-origin: left; background: var(--blue-500); }
+@media (max-width: 720px) { .nav__links { display: none; } }
+
+/* ----- Avatar (branded monogram — signature treatment) ------------------- */
+.avatar { position: relative; border-radius: 50%; overflow: hidden; container-type: size;
+  background: radial-gradient(circle at 50% 42%, var(--blue-400), var(--blue-600) 70%);
+  box-shadow: 0 0 13px 17px var(--blue-400); }
+/* monogram sized to the circle (cqmin) so the "LT" is legible — the original
+   34%/30% resolved against inherited font-size and rendered ~5px; numbers kept */
+.avatar__monogram { position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--ff-display); color: rgba(255,255,255,0.92);
+  font-size: 34cqmin; letter-spacing: 0.02em; }
+.avatar__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* ----- Inline SVG icons (inherit currentColor) --------------------------- */
+.icon { display: inline-block; flex: none; line-height: 0; color: inherit; }
+.icon svg { display: block; width: 100%; height: 100%; fill: currentColor; }
+.icon--email     { width: 26px; height: 26px; }
+.icon--linkedin  { width: 23px; height: 23px; }
+.icon--instagram { width: 24px; height: 24px; }
+
+/* inline doodle SVGs fill their sized wrapper (they replaced <img> tags) */
+.hero__doodle-swirl svg,
+.badge-hello .doodle-arrow svg,
+.cs-hero .eyebrow-row .spark svg { display: block; width: 100%; height: auto; }
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero { position: relative; overflow: hidden;
+  background: linear-gradient(128.6deg, rgba(113,167,198,0.8) 5%, #fff 53%, rgba(177,197,208,0.8) 89%); }
+/* the design canvas is 1400 × 1059 — every offset below is that geometry as a % */
+.hero__inner { position: relative; aspect-ratio: 1400 / 1059; min-height: 620px; }
+
+.hero__center { position: absolute; left: 50%; top: 2.9%; transform: translateX(-50%);
+  width: 65.2%; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; z-index: 2; }
+.badge-hello { position: relative; display: inline-flex; align-items: center; gap: 6px;
+  padding: 12px 26px; border-radius: 38px; background: rgba(255,255,255,0.35);
+  box-shadow: inset 0 0 0 1.3px #171717; font-weight: 500; font-size: 1.1rem; color: #171717; }
+.badge-hello .doodle-arrow { position: absolute; right: -22px; top: -22px; width: 28px; color: #171717; }
+.hero h1 { margin: 0; font-family: var(--ff-display); font-weight: 400;
+  font-size: clamp(2.6rem, 6.8vw, 5.97rem); line-height: 1; color: var(--ink); }
+.hero__role { display: block; font-size: clamp(1.35rem, 3.43vw, 3rem); font-weight: 600; color: var(--ink); line-height: 1.1; }
+
+/* big portrait circle: top edge at 51.6% of the hero, cropped by the section bottom.
+   The photo starts higher (31.9%) so the head clears the circle, and the section's
+   overflow crops it at the bottom edge — exactly as the design canvas does. */
+.hero__portrait { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero__portrait-circle { position: absolute; left: 50%; top: 51.6%; transform: translateX(-50%);
+  width: 68.1%; aspect-ratio: 954 / 978; border-radius: 50%;
+  background: var(--blue-600); box-shadow: 0 0 13px 17px var(--blue-400); }
+.hero__portrait-photo { position: absolute; left: 50%; top: 31.9%; transform: translateX(-50%);
+  width: 68.1%; height: auto; max-width: none; }
+
+.hero__quote { position: absolute; left: 4.2%; top: 36.8%; width: 38.2%; z-index: 2; }
+.hero__quote p { font-size: clamp(1rem, 1.72vw, 1.5rem); font-weight: 500; color: #000; line-height: 1.35; }
+.hero__contacts { position: absolute; left: 75.6%; top: 36.8%; z-index: 2; }
+/* base rotation is applied via Framer Motion (style rotate: 192) so it composes
+   with the scroll parallax without a transform conflict */
+.hero__doodle-swirl { position: absolute; left: 21.4%; top: 27.9%; width: 5.1%; min-width: 44px;
+  color: var(--blue-600); opacity: 0.9; z-index: 2; }
+
+.contact-list { display: flex; flex-direction: column; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.contact-list a, .contact-list span.c { display: inline-flex; align-items: center; gap: 12px;
+  font-weight: 500; font-size: 1rem; color: #000; }
+.contact-list a:hover { color: var(--blue-600); }
+
+/* ----- Intro band -------------------------------------------------------- */
+.intro { text-align: center; }
+.intro p { max-width: 1080px; margin-inline: auto; font-style: italic; font-weight: 400; color: var(--ink); font-size: 1rem; line-height: 1.6; }
+
+/* ==========================================================================
+   TOP PROJECTS (teasers)
+   ========================================================================== */
+.count-head { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px); }
+.count-badge { flex: none; width: 54px; height: 54px; border-radius: 50%; background: var(--blue-600);
+  color: #fff; display: grid; place-items: center; font-size: 2rem; font-weight: 500; }
+.count-head h2 { margin: 0; font-size: clamp(1.6rem, 3.4vw, 2.25rem); font-weight: 400; }
+/* design insets the pair inside the content band (175→1260) with a wide gutter */
+.teasers { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 12.6vw, 177px);
+  max-width: 1085px; margin-inline: auto; }
+.teaser { border-radius: 30px; background: var(--blue-600); color: #fff; padding: 24px;
+  box-shadow: 0 0 12px 2px rgba(0,0,0,0.25); display: flex; flex-direction: column; gap: 14px; }
+.teaser h3 { margin: 0; text-align: center; font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+.teaser p { text-align: center; font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.92); line-height: 1.5; }
+
+/* ==========================================================================
+   Placeholder mockups ("add asset" slots from the design)
+   ========================================================================== */
+.ph { border: 1px dashed var(--ph-dash); border-radius: 12px;
+  background: repeating-linear-gradient(135deg, var(--ph-a) 0 8px, var(--ph-b) 8px 16px);
+  display: grid; place-items: center; padding: 20px; min-height: 120px; }
+.ph span { font: 400 0.72rem/1.5 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--ph-text); text-align: center; }
+.ph--round { border-radius: 50%; }
+.ph-link { display: grid; text-decoration: none; color: inherit;
+  transition: border-color 0.25s ease, transform 0.25s var(--ease-out-expo), box-shadow 0.25s var(--ease-out-expo); }
+.ph-link:hover { border-color: var(--blue-600); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+.ph-link:hover span { color: var(--blue-600); }
+
+/* filled slot: a real image replaces the placeholder tile (lazy-loaded). The
+   slot takes the image's own aspect ratio, so an export is never letterboxed
+   inside a tile whose height was only chosen for the "add asset" state. */
+.ph--filled { border: 0; padding: 0; background: #fff; overflow: hidden; display: block;
+  min-height: 0; margin-inline: auto; }
+.ph--filled img { width: 100%; height: auto; }
+
+/* Browser / editor mockup frame */
+.mockup { border-radius: var(--radius); background: #fff; box-shadow: var(--shadow-lift); overflow: hidden; }
+.mockup__bar { height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #e7edf2; }
+.mockup__bar i { width: 10px; height: 10px; border-radius: 50%; background: #c9d5dd; }
+.mockup__bar .url { margin-left: 12px; flex: 1; height: 22px; border-radius: 11px; background: #fff; }
+.mockup__bar .label { margin-left: 12px; font-size: 0.75rem; font-weight: 500; color: var(--blue-600); }
+.mockup--dark .mockup__bar { background: var(--ink); }
+.mockup--dark .mockup__bar .label { color: rgba(255,255,255,0.7); }
+.mockup__body { padding: 18px; }
+.mockup__body .ph:not(.ph--filled) { min-height: 240px; }
+
+/* ==========================================================================
+   CASE STUDY title (dark hero with floating charts)
+   ========================================================================== */
+.cs-hero { position: relative; color: #fff; overflow: hidden; background: var(--brand-grad); }
+.cs-hero::before { content: ""; position: absolute; inset: 0; background: rgba(113,167,198,0.8); mix-blend-mode: normal; }
+.cs-hero .container { position: relative; }
+.cs-hero__inner { display: grid; grid-template-columns: 1fr 0.9fr; gap: 40px; align-items: center; padding-block: clamp(48px, 6vw, 80px); }
+.cs-hero .eyebrow-row { display: flex; align-items: center; gap: 12px; color: #fff; font-weight: 500; font-size: 1.25rem; }
+.cs-hero .eyebrow-row .spark { width: 28px; color: #fff; flex: none; }
+.cs-hero h2 { margin: 16px 0 0; font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700; line-height: 1; }
+/* design: the pair spans 800→1355 × 118→574 of the 1400 canvas (555 × 456),
+   with cards 300×396 and 280×380 — near-equal widths, both taller than wide */
+.cs-hero__art { position: relative; aspect-ratio: 555 / 456; min-height: 300px; }
+.float-card { position: absolute; background: #fff; color: var(--ink); border-radius: 18px;
+  box-shadow: var(--shadow-lift); padding: 16px; }
+.float-card h4 { margin: 0 0 12px; font-size: 0.82rem; font-weight: 600; }
+/* ph aspect = (card width − 32px padding) / design ph height */
+.float-card .ph { min-height: 0; }
+.float-card--primary { left: 0; top: 0; width: 54.05%; z-index: 1; }
+.float-card--primary .ph:not(.ph--filled) { aspect-ratio: 268 / 320; }
+.float-card--secondary { left: 49.55%; top: 12.72%; width: 50.45%; z-index: 2; }
+.float-card--secondary .ph:not(.ph--filled) { aspect-ratio: 248 / 304; }
+/* the browser-mockup variant gives the artwork the wider column (design: 640 / 805) */
+.cs-hero--browser .cs-hero__inner { grid-template-columns: 0.44fr 0.56fr; }
+.cs-hero--browser .cs-hero__art { display: block; aspect-ratio: auto; min-height: 0; }
+
+/* ==========================================================================
+   Banner (mid-section diagonal gradient header band)
+   ========================================================================== */
+.banner { position: relative; overflow: hidden; background: var(--brand-grad);
+  padding-block: clamp(48px, 8vw, 90px); text-align: center; }
+.banner::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.35); }
+.banner h2 { position: relative; margin: 0; color: #fff; font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; line-height: 1.05; }
+
+/* Problem callout (right-aligned quote + main problem left) */
+.problem-grid { display: grid; grid-template-columns: 0.42fr 0.58fr; gap: clamp(24px, 4vw, 46px); align-items: start; }
+.problem-quote { text-align: right; }
+.problem-quote .tag-label { font-size: 1.25rem; font-weight: 500; color: var(--ink); }
+.problem-quote blockquote { margin: 10px 0 0; font-size: 1.4rem; font-weight: 700; line-height: 1.4; color: var(--quote); }
+.chip-cta { display: inline-block; margin-top: 24px; border-radius: 10px; background: #d9d9d9;
+  padding: 4px 14px; font-weight: 500; font-size: 1.15rem; color: var(--ink); }
+
+/* ==========================================================================
+   Research (stakeholder card + findings)
+   ========================================================================== */
+.research-grid { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(20px, 3vw, 34px); align-items: start; }
+.stakeholder { border-radius: 12px; background: #fff; box-shadow: var(--shadow-card); padding: 30px; }
+.stakeholder__top { display: flex; gap: 20px; align-items: center; }
+.stakeholder .avatar { width: 95px; height: 95px; flex: none; box-shadow: none; }
+.stakeholder .avatar__monogram { font-size: 30cqmin; }
+.stakeholder__name { font-size: 1.4rem; font-weight: 600; line-height: 1.15; }
+.stakeholder__role { color: var(--muted); font-size: 1rem; margin-top: 8px; }
+.stakeholder__tag { font-weight: 500; margin-top: 4px; }
+.stakeholder hr { border: 0; border-top: 1px solid var(--muted); margin: 20px 0; }
+.findings { border-radius: 12px; background: #fff; box-shadow: var(--shadow-card); padding: 30px; }
+.findings .kicker { margin-bottom: 16px; }
+.findings .stack { gap: 14px; }
+
+/* Journey (prospective / retrospective) */
+.journey-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: start; }
+
+/* ==========================================================================
+   Pipeline / step grids
+   ========================================================================== */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px 22px; }
+.steps--six { grid-template-columns: repeat(3, 1fr); }
+.step { border-radius: 12px; border: 1px solid var(--blue-500); background: #fff; padding: 18px; min-height: 150px; box-shadow: var(--shadow-soft); }
+.step--soft { background: rgba(113,167,198,0.10); border-color: var(--blue-600); box-shadow: none; }
+.step--solid { background: var(--blue-600); border-color: var(--blue-600); }
+.step .n { display: block; font-size: 0.875rem; font-weight: 500; color: var(--blue-500); }
+.step--soft .n { color: var(--blue-600); }
+.step--solid .n { color: rgba(255,255,255,0.8); }
+.step h4 { margin: 10px 0 0; font-size: 1.125rem; font-weight: 600; line-height: 1.25; }
+.step--solid h4 { color: #fff; }
+.step p { margin-top: 8px; font-size: 0.875rem; font-weight: 500; color: var(--muted); line-height: 1.45; }
+.flow-caption { margin-top: 26px; text-align: center; color: var(--muted); font-weight: 500; }
+
+/* Preprocessing */
+.pre-grid { display: grid; grid-template-columns: 0.57fr 0.43fr; gap: clamp(20px, 2.3vw, 29px); align-items: start; }
+.mini-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.mini-card { border-radius: 10px; background: var(--bg-panel); padding: 16px; }
+.mini-card h4 { margin: 0 0 8px; font-size: 1rem; font-weight: 600; }
+.mini-card p { font-size: 0.875rem; font-weight: 500; color: var(--muted); line-height: 1.45; }
+.why-card { border-radius: 12px; background: #fff; box-shadow: var(--shadow-card); padding: 26px; }
+.why-card .stack { gap: 20px; margin-top: 18px; }
+
+/* ==========================================================================
+   Comparison table + decision flow
+   ========================================================================== */
+.cmp-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden;
+  background: #fff; box-shadow: var(--shadow-card); }
+.cmp-table th, .cmp-table td { text-align: left; padding: 20px 26px; font-size: 1.05rem; }
+.cmp-table thead th { background: var(--blue-600); color: #fff; font-weight: 600; }
+.cmp-table tbody tr { border-bottom: 1px solid var(--border); }
+.cmp-table tbody tr:last-child { border-bottom: 0; }
+.cmp-table td { font-weight: 500; color: var(--ink); }
+.cmp-table td.muted { color: var(--muted); }
+.cmp-table .lead { font-weight: 600; }
+.cmp-table .note { font-weight: 500; color: var(--muted); }
+.cmp-table .champ { font-weight: 500; color: var(--blue-600); }
+.cmp-table tr.is-selection { background: rgba(113,167,198,0.10); }
+.decision { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 14px; margin-top: 40px; }
+.decision .arrow { color: var(--blue-500); font-size: 1.5rem; font-weight: 500; text-align: center; }
+.decision__card { border-radius: 12px; background: #fff; box-shadow: var(--shadow-soft); padding: 22px; min-height: 150px; }
+.decision__card h4 { margin: 0 0 10px; font-size: 1.125rem; font-weight: 600; }
+.decision__card p { font-size: 1rem; font-weight: 500; color: var(--muted); }
+.decision__card--win { background: var(--blue-600); }
+.decision__card--win h4 { color: #fff; }
+.decision__card--win p { color: rgba(255,255,255,0.85); }
+
+/* ==========================================================================
+   Framework layers / cards grids
+   ========================================================================== */
+.cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.layer-card { border-radius: 12px; background: #fff; box-shadow: 0 0 12px 2px rgba(0,0,0,0.15); padding: 30px; min-height: 260px; }
+.layer-card .n { display: block; font-size: 1.5rem; font-weight: 500; color: var(--blue-500); }
+.layer-card h3 { margin: 14px 0 0; font-size: 1.5rem; font-weight: 600; }
+.layer-card p { margin-top: 16px; }
+
+/* Artefact cards */
+.artefacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+/* a banner-shaped export (the GPT-4 scorecard is ~3.7:1) is unreadable in a
+   third-of-a-row cell, so its group pairs up and gives that card the full row */
+.artefacts--split { grid-template-columns: repeat(2, 1fr); }
+.artefact--wide { grid-column: 1 / -1; }
+.artefact { border-radius: 20px; background: #fff; box-shadow: 0 0 12px 2px rgba(0,0,0,0.10); padding: 20px; }
+.artefact h4 { margin: 0; font-size: 1rem; font-weight: 600; }
+.artefact .sub { margin-top: 4px; font-size: 0.875rem; font-weight: 500; color: var(--muted); }
+.artefact .ph { margin-top: 14px; }
+.artefact .ph:not(.ph--filled) { min-height: 240px; }
+.shap-legend { margin-top: 14px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.shap-legend span { display: inline-flex; gap: 7px; align-items: center; font-size: 0.75rem; font-weight: 500; color: var(--muted); }
+.shap-legend i { width: 10px; height: 10px; border-radius: 2px; }
+.shap-legend .neg { background: var(--shap-neg); }
+.shap-legend .pos { background: var(--shap-pos); }
+.center-note { margin-top: 28px; text-align: center; color: var(--muted); font-weight: 500; }
+
+/* ==========================================================================
+   Evaluation (stats + tilted sheet)
+   ========================================================================== */
+.eval-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 5vw, 60px); align-items: center; }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 20px 0; }
+.stat { border-radius: 10px; background: var(--bg-panel); padding: 14px 16px; }
+.stat b { display: block; font-size: 1.5rem; font-weight: 700; line-height: 1.1; }
+.stat span { display: block; margin-top: 6px; font-size: 0.875rem; font-weight: 500; color: var(--muted); line-height: 1.35; }
+.tilt-sheet { background: #fff; box-shadow: 0 0 16px 6px rgba(0,0,0,0.22); padding: 20px; border-radius: 6px; }
+.tilt-sheet h4 { margin: 0 0 14px; font-size: 0.9rem; font-weight: 600; }
+.tilt-sheet .ph { border-radius: 0; min-height: 320px; }
+
+.test-plan-table { width: 100%; border-collapse: collapse; }
+.test-plan-table th, .test-plan-table td { text-align: left; padding: 10px 12px; font-size: 0.82rem; vertical-align: top; }
+.test-plan-table thead th { background: var(--blue-600); color: #fff; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.test-plan-table tbody tr { border-bottom: 1px solid var(--border); }
+.test-plan-table tbody tr:last-child { border-bottom: 0; }
+.test-plan-table td { color: var(--ink); font-weight: 500; }
+.test-plan-table td.lead { font-weight: 600; }
+.test-plan-table .note { display: block; margin-top: 2px; font-weight: 500; color: var(--muted); font-size: 0.72rem; }
+
+/* ==========================================================================
+   Dashboard pages (CS2)
+   ========================================================================== */
+.dash-pages { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: start; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.tag { border-radius: 8px; border: 1px solid var(--border); padding: 10px 14px; font-size: 0.875rem; font-weight: 500; color: var(--blue-600); }
+.tag--fill { border: 0; background: var(--bg-panel); color: var(--ink); padding: 14px 18px; font-size: 1rem; }
+.mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.mock-grid--wide { grid-template-columns: 1fr; }
+.data-flow-panel { border-radius: 30px; background: #fff; box-shadow: var(--shadow-card); padding: clamp(24px, 4vw, 60px); margin-top: 24px; }
+.data-flow-panel h3 { text-align: center; margin: 26px 0 0; font-size: 1.5rem; font-weight: 600; }
+
+/* Building the system */
+.build-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: start; }
+.build-card { border-radius: 12px; background: #fff; box-shadow: var(--shadow-card); padding: 24px; }
+.build-card .tag-row { margin: 18px 0; }
+.tag--solid { background: var(--blue-600); color: #fff; border: 0; }
+
+/* design: "06 Final Project" label sits left of the dashboard mockup */
+.final-project { display: grid; grid-template-columns: 0.24fr 0.76fr; gap: clamp(20px, 2vw, 28px); align-items: start; }
+.final-project .section-head { margin-bottom: 0; }
+
+/* Final project url cards */
+.url-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+.url-card { border-radius: 15px; padding: 14px 18px; }
+.url-card--a { background: rgba(113,167,198,0.56); }
+.url-card--b { background: rgba(141,185,209,0.56); }
+.url-card .k { display: block; font-weight: 500; font-size: 1.25rem; }
+.url-card .v { display: block; margin-top: 4px; font-weight: 500; font-size: 1rem; color: var(--ink); word-break: break-word; }
+.url-card .v.placeholder { color: #33506180; font-style: italic; }
+.url-card a.v { transition: color 0.25s ease; }
+.url-card a.v:hover { color: var(--blue-600); text-decoration: underline; }
+
+/* ==========================================================================
+   Selected projects
+   ========================================================================== */
+.flagship { margin-top: 12px; border-radius: 30px; background: var(--blue-600); color: #fff;
+  box-shadow: 0 0 12px 2px rgba(0,0,0,0.25); padding: clamp(28px, 4vw, 44px); display: flex; flex-direction: column; gap: 22px; }
+.flagship__head { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.flagship__head h3 { margin: 0; font-size: clamp(1.3rem, 3vw, 1.5rem); font-weight: 700; }
+.live-badge { display: inline-flex; gap: 8px; align-items: center; border-radius: 8px; background: #fff;
+  padding: 8px 14px; font-size: 0.875rem; font-weight: 500; color: var(--blue-600); }
+.live-badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--blue-600); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.flagship__meta { font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.8); }
+.flagship p.lead { font-size: 1rem; font-weight: 500; line-height: 1.5; text-align: justify; }
+.flagship .metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.flagship .metric { border-radius: 10px; background: rgba(255,255,255,0.14); padding: 14px 16px; }
+.flagship .metric b { display: block; font-size: 1.5rem; font-weight: 700; }
+.flagship .metric span { display: block; margin-top: 6px; font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.85); }
+.flagship .tag-row .tag { border-color: rgba(255,255,255,0.45); color: #fff; }
+.flagship .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.flagship .btn { border-radius: 8px; background: #fff; padding: 12px 18px; font-weight: 500; font-size: 1rem;
+  color: var(--blue-600); text-align: center; overflow-wrap: anywhere; max-width: 100%; }
+.flagship .btn:hover { background: #f0f5f8; }
+.proj .repo { overflow-wrap: anywhere; }
+
+.cat-title { display: block; margin: 52px 0 0; font-style: italic; font-weight: 600; font-size: 1.25rem; }
+.cat-title.dim { color: var(--muted); }
+.cat-rule { margin: 14px 0 24px; height: 1px; background: var(--muted); border: 0; }
+.cat-rule.faint { background: var(--border); }
+.proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.proj { border-radius: 20px; background: #fff; box-shadow: 0 0 12px 2px rgba(0,0,0,0.10); padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.proj h4 { margin: 0; font-size: 1rem; font-weight: 600; }
+.proj .meta { font-size: 0.875rem; font-weight: 500; color: var(--muted); }
+.proj p { font-size: 0.875rem; font-weight: 500; color: var(--muted); line-height: 1.45; }
+.proj .tag-row { margin-top: auto; }
+.proj .repo { margin-top: auto; font-size: 0.875rem; font-weight: 500; color: var(--blue-600); border-bottom: 1px solid var(--border); padding-bottom: 4px; align-self: flex-start; }
+.proj .repo:hover { border-bottom-color: var(--blue-600); }
+.proj__footer { margin-top: auto; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.proj__footer .repo { margin-top: 0; }
+.ph--chip { min-height: auto; padding: 9px 13px; border-radius: 8px; }
+.proj--dim { background: rgba(255,255,255,0.6); box-shadow: 0 0 12px 2px rgba(0,0,0,0.04); }
+.proj--dim h4, .proj--dim .meta, .proj--dim p { color: var(--muted); }
+.proj--dim .tag { color: var(--muted); border-color: #ececec; }
+.proj__head { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; }
+.badge-bonus { border-radius: 8px; background: #f0f0f0; padding: 6px 10px; font-size: 0.75rem; font-weight: 500; color: var(--muted); }
+
+/* ==========================================================================
+   Closing
+   ========================================================================== */
+.closing { position: relative; overflow: hidden; color: #fff;
+  background: linear-gradient(245.7deg, var(--blue-600) 0%, #99bccf 67%); }
+.closing::before { content: ""; position: absolute; inset: 0; opacity: 0.85;
+  background: linear-gradient(115.5deg, var(--blue-500) 4%, var(--blue-400) 52%, var(--blue-200) 87%); }
+.closing .container { position: relative; }
+.closing__inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; padding-block: clamp(48px, 7vw, 90px); }
+.closing h2 { margin: 0; font-size: clamp(2.6rem, 7vw, 4rem); font-weight: 700; line-height: 1.1; }
+.closing .role { display: block; margin: 8px 0 24px; font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 600; }
+.closing h3 { margin: 0 0 20px; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; }
+.closing .contact-list a, .closing .contact-list span.c { color: #fff; }
+.closing .contact-list a:hover { color: rgba(255,255,255,0.75); }
+.closing .avatar { width: min(46vw, 541px); aspect-ratio: 1; }
+
+/* ==========================================================================
+   Custom cursor (fine-pointer, non-reduced-motion only)
+   ========================================================================== */
+.cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; z-index: 100; pointer-events: none;
+  border-radius: 50%; mix-blend-mode: normal; will-change: transform; }
+.cursor-dot { width: 6px; height: 6px; background: var(--blue-600); margin: -3px 0 0 -3px; }
+.cursor-ring { width: 34px; height: 34px; border: 1.5px solid rgba(90,134,158,0.55); margin: -17px 0 0 -17px; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .steps, .steps--six { grid-template-columns: repeat(2, 1fr); }
+  .artefacts, .cards-3, .proj-grid { grid-template-columns: repeat(2, 1fr); }
+  .flagship .metrics { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 860px) {
+  .cs-hero__inner, .eval-grid, .build-grid, .closing__inner, .final-project { grid-template-columns: 1fr; }
+  .cs-hero__inner { text-align: left; }
+  .split, .problem-grid, .research-grid, .journey-grid, .pre-grid, .dash-pages, .mock-grid, .ideate-pair { grid-template-columns: 1fr; }
+  .problem-quote { text-align: left; }
+  .decision { grid-template-columns: 1fr; }
+  .decision .arrow { transform: rotate(90deg); }
+  .teasers { grid-template-columns: 1fr; max-width: none; }
+  .closing__inner .closing__aside { order: -1; justify-self: center; }
+  .stakeholder__top { flex-direction: column; text-align: center; align-items: center; }
+
+  /* hero drops the absolute canvas and stacks in flow order */
+  .hero__inner { aspect-ratio: auto; min-height: 0; display: flex; flex-direction: column;
+    align-items: center; gap: 28px; padding-block: clamp(40px, 8vw, 64px); }
+  .hero__center, .hero__quote, .hero__contacts {
+    position: static; transform: none; width: 100%; left: auto; top: auto; }
+  /* stays positioned so the circle/photo keep their containing block */
+  .hero__portrait { position: relative; inset: auto; width: min(78%, 340px); aspect-ratio: 1; overflow: hidden; }
+  .hero__portrait-circle { left: 0; top: 0; transform: none; width: 100%; aspect-ratio: 1; }
+  .hero__portrait-photo { top: auto; bottom: 0; width: 100%; }
+  .hero__quote p { text-align: left; }
+  .hero__doodle-swirl { position: static; width: 62px; min-width: 0; align-self: flex-start; }
+}
+@media (max-width: 560px) {
+  .steps, .steps--six, .artefacts, .cards-3, .proj-grid, .stats, .mini-cards, .url-cards { grid-template-columns: 1fr; }
+  .flagship .metrics { grid-template-columns: repeat(2, 1fr); }
+  .flagship .btns { flex-direction: column; }
+  .flagship .btns > * { width: 100%; }
+  .flagship .btn { width: 100%; }
+  .cmp-table th, .cmp-table td { padding: 14px 16px; font-size: 0.95rem; }
+  .cs-hero__art { position: static; display: flex; flex-direction: column; align-items: stretch;
+    gap: 16px; aspect-ratio: auto; min-height: 0; }
+  .float-card, .float-card--primary, .float-card--secondary { position: static; top: auto; left: auto; width: 100%; max-width: none; }
+  .float-card--primary .ph:not(.ph--filled), .float-card--secondary .ph:not(.ph--filled) { aspect-ratio: auto; min-height: 220px; }
+}
+
+/* ==========================================================================
+   Reduced motion — global guardrail. Component-level Framer Motion also
+   checks useReducedMotion(); this covers the CSS-driven pieces.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .live-badge i { animation: none; }
+  .nav__links a::after { transition: none; }
+  .cursor-dot, .cursor-ring { display: none; }
+}

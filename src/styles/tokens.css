@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Design tokens — extracted verbatim from the original styles.css.
+   Single source of truth for color, spacing, radii, shadows, type, breakpoints.
+   ========================================================================== */
+:root {
+  /* --- Brand blues --- */
+  --blue-600: #5a869e;   /* primary accent / cards            rgb(90,134,158)  */
+  --blue-500: #71a7c6;   /* section numbers, gradient start   rgb(113,167,198) */
+  --blue-400: #82afc9;   /* glow                              rgb(130,175,201) */
+  --blue-200: #b1c5d0;   /* pale blue                         rgb(177,197,208) */
+  --navy-900: #202f38;   /* gradient end                      rgb(32,47,56)    */
+
+  /* --- Ink & neutrals --- */
+  --ink:      #242424;   /* headings                          rgb(36,36,36)    */
+  --muted:    #a2a2a2;   /* body copy                         rgb(162,162,162) */
+  --quote:    #5a5656;   /* problem quotes                    rgb(90,86,86)    */
+
+  --bg:        #ffffff;
+  --bg-soft:   #fafafa;
+  --bg-panel:  #f5f5f5;
+  --border:    #e4e7ec;
+
+  /* placeholder tiles (design uses these for "add asset" slots) */
+  --ph-dash:  #b6c6d1;
+  --ph-a:     #e8eef2;
+  --ph-b:     #f3f7f9;
+  --ph-text:  #5a869e;
+
+  /* SHAP conventional accents */
+  --shap-neg: oklch(0.55 0.09 250);
+  --shap-pos: oklch(0.55 0.09 10);
+
+  /* --- Gradients & shadows --- */
+  --brand-grad: linear-gradient(245.7deg, var(--blue-600) 0%, var(--navy-900) 75.57%);
+  --shadow-card: 0 0 12px 2px rgba(0,0,0,0.12);
+  --shadow-soft: 0 0 10px 0 rgba(0,0,0,0.06);
+  --shadow-lift: 0 12px 32px rgba(0,0,0,0.22);
+
+  /* --- Layout scale --- */
+  /* design canvas is 1400 wide with 67px gutters → a 1266px content band */
+  --container: 1400px;
+  --pad-x: clamp(20px, 5vw, 67px);
+  --radius: 16px;
+
+  /* --- Type families --- */
+  --ff: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ff-display: "Vast Shadow", Georgia, "Times New Roman", serif;
+
+  /* --- Motion (added for the React/Framer Motion layer; visual identity unchanged) --- */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-reveal: 0.7s;
+}
+
+/* Breakpoints (documented for reference; media queries use the literal px):
+   --bp-lg: 1024px;  --bp-md: 860px;  --bp-sm: 560px;  --bp-nav: 720px; */

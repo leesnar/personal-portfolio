@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesnar Tambun — AI/ML Engineer</title>
+<meta name="description" content="Portfolio of Lesnar Tambun, AI/ML Engineer & Data Engineer — explainable ML, evaluation frameworks, and data pipelines you can trust.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Vast+Shadow&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="nav__brand" href="#top">Lesnar Tambun <span>· AI/ML</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#intro">About</a>
+      <a href="#case-study-1">XAI Framework</a>
+      <a href="#case-study-2">Intrusion Detection</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__intro">
+      <span class="badge-hello">Hello!
+        <img class="doodle-arrow" src="assets/doodle-arrow.svg" alt="">
+      </span>
+      <h1>I&rsquo;m Lesnar,</h1>
+      <span class="hero__role">AI/ML Engineer &amp; Data Engineer</span>
+      <p class="hero__quote">&ldquo;Think of me as the bridge between raw data and decisions you can trust &mdash; accuracy on one hand, explainability on the other.&rdquo;</p>
+      <img class="hero__doodle-swirl" src="assets/doodle-swirl.svg" alt="">
+    </div>
+    <div class="hero__aside">
+      <div class="avatar" role="img" aria-label="Portrait of Lesnar Tambun">
+        <span class="avatar__monogram">LT</span>
+        <span class="avatar__photo"></span>
+      </div>
+      <ul class="contact-list" style="list-style:none;margin:0;padding:0;">
+        <li><a href="mailto:lesnartambun1808@gmail.com"><span class="ico ico--email"></span>lesnartambun1808@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/lesnar-tambun" target="_blank" rel="noopener"><span class="ico ico--linkedin"></span>Lesnar Tambun</a></li>
+        <li><a href="https://instagram.com/lee.snar" target="_blank" rel="noopener"><span class="ico ico--instagram"></span>@lee.snar</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ INTRO ══════════════════ -->
+<section class="section intro" id="intro">
+  <div class="container reveal">
+    <p>As an AI/ML Engineer and Data Engineer, I turn messy data into evaluated, explainable systems that people can actually rely on. My work spans model development, pipeline engineering, and validation &mdash; from training a classifier to proving its explanation holds up under scrutiny. Every project starts with the problem, not the algorithm, and follows a structured process from data understanding to deployment. I believe the best ML systems are the ones where accuracy and trustworthiness are treated as equally important.</p>
+  </div>
+</section>
+
+<!-- ══════════════════ TOP PROJECTS ══════════════════ -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="count-head reveal">
+      <span class="count-badge">2</span>
+      <h2>top listed chosen project</h2>
+    </div>
+    <div class="teasers">
+      <article class="teaser reveal">
+        <h3>Multi-Layer XAI Validation Framework</h3>
+        <p>a research framework that audits SHAP and LIME explanations instead of trusting them blindly &mdash; combining stability testing, LLM-based semantic validation, and clinician review for heart disease classification.</p>
+        <div class="ph" style="min-height:180px;"><span>placeholder — SHAP summary plot<br>add asset</span></div>
+      </article>
+      <article class="teaser reveal">
+        <h3>Network Intrusion Detection &amp; Risk Scoring</h3>
+        <p>a machine learning system that turns 47,700 raw network logs into a prioritized threat dashboard &mdash; cutting the security team&rsquo;s actionable alert queue by 98%.</p>
+        <div class="ph" style="min-height:180px;"><span>placeholder — Looker Studio dashboard<br>add asset</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CASE STUDY 1 — TITLE ══════════════════ -->
+<section class="cs-hero" id="case-study-1">
+  <div class="container cs-hero__inner">
+    <div>
+      <span class="eyebrow-row"><img class="spark" src="assets/sparkle.svg" alt="">Undergraduate Thesis &middot; Explainable AI</span>
+      <h2>Multi-Layer XAI Validation Framework</h2>
+    </div>
+    <div class="cs-hero__art reveal">
+      <div class="float-card">
+        <h4>SHAP global feature importance</h4>
+        <div class="ph"><span>placeholder<br>chart export</span></div>
+      </div>
+      <div class="float-card">
+        <h4>Jaccard stability comparison</h4>
+        <div class="ph"><span>placeholder<br>chart export</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · 01 Project Overview -->
+<section class="section">
+  <div class="container split reveal">
+    <div class="split__aside">
+      <span class="num">01</span>
+      <h2>Project Overview</h2>
+    </div>
+    <div>
+      <div class="field">
+        <span class="field__label">Background case</span>
+        <p class="body body--justify">High-performing machine learning models like XGBoost are often black boxes. In clinical screening contexts, doctors and patients can&rsquo;t act on a prediction they don&rsquo;t understand &mdash; and Explainable AI tools like SHAP and LIME are frequently used without ever checking whether the explanation itself is stable, consistent, or medically plausible. This gap between &ldquo;looks interpretable&rdquo; and &ldquo;is actually trustworthy&rdquo; is what this research addresses.</p>
+      </div>
+      <div class="field">
+        <span class="field__label">Project Goals</span>
+        <p class="body body--justify">To build and validate a multi-layer framework that audits SHAP and LIME explanations across three dimensions &mdash; computational stability, LLM-based semantic plausibility, and clinical domain-expert review &mdash; using heart disease classification as the test case.</p>
+      </div>
+      <div class="field">
+        <span class="field__label">My Role</span>
+        <p class="body">AI/ML Engineer (Research)</p>
+      </div>
+      <div class="field">
+        <span class="field__label">My Responsibilities</span>
+        <p class="body">Data Pipeline Design, Model Development, XAI Validation Framework, Statistical Analysis</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · 02 Understand context -->
+<div class="banner"><div class="container"><h2>Understand context of the problem</h2></div></div>
+<section class="section">
+  <div class="container problem-grid reveal">
+    <div>
+      <span class="eyebrow">02</span>
+      <h3 style="margin:6px 0 16px;font-size:clamp(1.5rem,3.4vw,2rem);font-weight:600;">Main Problem</h3>
+      <p class="body body--justify">Explainable AI outputs (SHAP, LIME) are algorithmic artifacts that can be affected by data noise, method configuration, preprocessing, and model characteristics &mdash; so they cannot be accepted at face value. They need to be evaluated for stability, cross-method consistency, medical plausibility, and expert judgment.</p>
+    </div>
+    <div class="problem-quote">
+      <span class="tag-label">Problem</span>
+      <blockquote>&ldquo;An accurate model with an untrustworthy explanation is not safe to deploy in healthcare &mdash; yet most XAI research stops at visualizing SHAP plots without testing whether that visualization is reliable.&rdquo;</blockquote>
+      <span class="chip-cta">How to solve this problem?</span>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · 03 Research -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal"><span class="num">03</span><h2>Research</h2></div>
+    <div class="research-grid reveal">
+      <div class="stakeholder">
+        <div class="stakeholder__top">
+          <div class="avatar" aria-hidden="true"><span class="avatar__monogram">AU</span></div>
+          <div>
+            <div class="stakeholder__name">Dr. dr. Amalia Tri Utami, M.Biomed</div>
+            <div class="stakeholder__role">Biomedical Science Expert</div>
+            <div class="stakeholder__tag">Domain Validator</div>
+          </div>
+        </div>
+        <hr>
+        <div class="stack" style="gap:18px;">
+          <div class="field" style="gap:8px;">
+            <span class="field__label" style="font-size:1.25rem;">Background</span>
+            <p class="body body--justify">Reviewed SHAP global/local plots, LIME local explanations, and SHAP&ndash;LIME overlap comparisons as the domain-expert layer of the validation framework.</p>
+          </div>
+          <div class="field" style="gap:8px;">
+            <span class="field__label" style="font-size:1.25rem;">Context</span>
+            <p class="body body--justify">Existing XAI outputs are rarely tested for whether their reasoning aligns with actual clinical knowledge before being presented to healthcare stakeholders.</p>
+          </div>
+          <div class="field" style="gap:8px;">
+            <span class="field__label" style="font-size:1.25rem;">Needs</span>
+            <p class="body body--justify">An explanation artifact that is readable, medically relevant, and honest about its own limitations &mdash; not just visually convincing.</p>
+          </div>
+        </div>
+      </div>
+      <div class="findings">
+        <span class="kicker">Findings</span>
+        <div class="stack">
+          <p class="body body--justify"><strong>Model performance trade-off:</strong> Random Forest led on accuracy (86.89%) and AUC-ROC (94.05%), but XGBoost was selected for recall (92.86%) &mdash; in screening, missing a sick patient is costlier than a false alarm.</p>
+          <p class="body body--justify"><strong>Explanation stability varies by method:</strong> SHAP (TreeExplainer) is more deterministic since it reads the tree structure directly; LIME depends on local sampling and surrogate models, making it more sensitive to configuration.</p>
+          <p class="body body--justify"><strong>Plausibility is feature-dependent:</strong> Features like <em>thalach</em> (75%) and <em>cp</em> (60%) aligned well with medical literature; features like <em>chol</em> (33%) needed caution due to phenomena like the cholesterol paradox.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · Validation journey map -->
+<section class="section section--soft">
+  <div class="container journey-grid reveal">
+    <div class="stack" style="gap:34px;">
+      <div class="field" style="gap:12px;">
+        <span class="field__label" style="font-size:1.5rem;">Prospective Validation Journey</span>
+        <p class="body body--justify">A prediction is generated &rarr; SHAP/LIME explanation is produced &rarr; explanation undergoes noise-based stability testing &rarr; direction of contribution is checked by GPT-4 against medical literature &rarr; final artifact is reviewed by a domain expert before being considered trustworthy.</p>
+      </div>
+      <div class="field" style="gap:12px;">
+        <span class="field__label" style="font-size:1.5rem;">Retrospective Validation Journey</span>
+        <p class="body body--justify">Testing revealed that computational stability alone (Jaccard 0.72 for SHAP) wasn&rsquo;t sufficient &mdash; semantic validation caught cases where a statistically stable explanation still lacked medical plausibility, which led to explicitly flagging &ldquo;features requiring caution&rdquo; (chol, ca) in the final framework.</p>
+      </div>
+    </div>
+    <div class="mockup" style="box-shadow:0 0 15px 20px rgba(0,0,0,0.06);">
+      <div class="mockup__body"><h4 style="margin:0 0 14px;font-size:0.9rem;font-weight:600;">Validation journey diagram</h4>
+        <div class="ph" style="min-height:360px;"><span>placeholder<br>validation journey diagram<br>add asset</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · 04 Solution -->
+<section class="section">
+  <div class="container split reveal">
+    <div class="split__aside"><span class="num">04</span><h2>Solution</h2></div>
+    <p class="body body--justify">A three-layer XAI validation framework: (1) computational stability testing via noise injection and Jaccard index, (2) LLM-based semantic validation of feature-contribution direction against medical literature, and (3) domain-expert review of the final artifacts &mdash; applied on top of a leakage-safe XGBoost/Random Forest pipeline.</p>
+  </div>
+</section>
+
+<!-- CS1 · 05 Ideate & Methodology -->
+<div class="banner"><div class="container"><h2>Ideate &amp; Methodology Design</h2></div></div>
+<section class="section">
+  <div class="container split reveal">
+    <div class="split__aside"><span class="num">05</span><h2>Ideate</h2></div>
+    <div>
+      <div class="field">
+        <span class="field__label">Computational Stability Testing</span>
+        <p class="body body--justify">Inject Gaussian noise (&sigma;=0.01) into 20 test patients across 30 iterations, then measure how much the top-5 SHAP/LIME feature set survives using the Jaccard index &mdash; revealing whether an explanation is a stable signal or noise-sensitive artifact.</p>
+      </div>
+      <div class="field">
+        <span class="field__label">LLM Semantic Validation Layer</span>
+        <p class="body body--justify">Use GPT-4 as a literature-grounded reviewer (not a diagnostic tool) to score whether each feature&rsquo;s direction of contribution &mdash; e.g. &ldquo;higher age increases risk&rdquo; &mdash; is medically plausible, producing a 1&ndash;5 alignment score per case.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · Pipeline flow -->
+<section class="section section--soft">
+  <div class="container reveal">
+    <p class="kicker">Pipeline Flow</p>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h4>Raw Data</h4></div>
+      <div class="step"><span class="n">02</span><h4>ColumnTransformer</h4><p>numeric: KNNImputer + MinMaxScaler / categorical: SimpleImputer + One-Hot</p></div>
+      <div class="step"><span class="n">03</span><h4>SMOTE</h4><p>train folds only, inside ImbPipeline</p></div>
+      <div class="step"><span class="n">04</span><h4>GridSearchCV</h4><p>5-fold Stratified CV — RF: 36 combos, XGBoost: 162 combos → 990 total fits</p></div>
+      <div class="step step--soft"><span class="n">05</span><h4>Champion Model Selection</h4><p>by recall</p></div>
+      <div class="step step--soft"><span class="n">06</span><h4>SHAP / LIME Interpretation</h4></div>
+      <div class="step step--soft"><span class="n">07</span><h4>Multi-Layer Validation</h4></div>
+      <div class="step step--solid"><span class="n">08</span><h4>Final Artifact</h4></div>
+    </div>
+    <p class="flow-caption">Raw Data &rarr; preprocessing &rarr; resampling &rarr; tuning &rarr; champion model &rarr; interpretation &rarr; validation &rarr; artifact</p>
+  </div>
+</section>
+
+<!-- CS1 · Preprocessing design -->
+<section class="section">
+  <div class="container reveal">
+    <p class="kicker">Preprocessing Design</p>
+    <div class="pre-grid">
+      <div>
+        <div class="mockup" style="box-shadow:0 0 4px 2px rgba(0,0,0,0.12);">
+          <div class="mockup__body"><h4 style="margin:0 0 14px;font-size:0.9rem;font-weight:600;">Anti-leakage pipeline sketch</h4>
+            <div class="ph" style="min-height:240px;"><span>placeholder<br>pipeline sketch / diagram<br>add asset</span></div>
+          </div>
+        </div>
+        <div class="mini-cards">
+          <div class="mini-card"><h4>Split first</h4><p>Data is split before any transformation is fitted.</p></div>
+          <div class="mini-card"><h4>SMOTE in-fold</h4><p>Resampling runs only on the training fold, never on validation data.</p></div>
+          <div class="mini-card"><h4>Split paths</h4><p>Numeric and categorical features travel separate transformation paths.</p></div>
+        </div>
+      </div>
+      <div class="why-card">
+        <span class="field__label">Why the pipeline is built this way</span>
+        <div class="stack">
+          <p class="body body--justify"><strong>Why split before any transformation:</strong> fitting an imputer or scaler on the full dataset lets test-set statistics leak into training, inflating every metric that follows.</p>
+          <p class="body body--justify"><strong>Why SMOTE only in the training fold:</strong> synthesising minority samples across the whole set creates near-duplicates of validation rows, so the model is scored on data it has effectively seen.</p>
+          <p class="body body--justify"><strong>Why numeric and categorical paths are separated:</strong> each type needs its own imputation and encoding strategy &mdash; KNNImputer + MinMaxScaler for numeric, SimpleImputer + One-Hot for categorical.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · Model comparison framework -->
+<section class="section section--panel">
+  <div class="container reveal">
+    <p class="kicker">Model Comparison Framework</p>
+    <table class="cmp-table">
+      <thead><tr><th>Metric</th><th>Random Forest</th><th>XGBoost</th></tr></thead>
+      <tbody>
+        <tr><td>Accuracy</td><td class="lead">86.89% <span class="note">— led</span></td><td class="muted">not reported in study</td></tr>
+        <tr><td>AUC-ROC</td><td class="lead">94.05% <span class="note">— led</span></td><td class="muted">not reported in study</td></tr>
+        <tr class="is-selection"><td class="lead">Recall <span class="champ">(selection metric)</span></td><td class="muted">not reported in study</td><td class="lead">92.86% <span class="champ">— champion</span></td></tr>
+      </tbody>
+    </table>
+    <div class="decision">
+      <div class="decision__card"><h4>Candidate metrics</h4><p>Accuracy, AUC-ROC and recall are all on the table after 5-fold tuning.</p></div>
+      <span class="arrow">&rarr;</span>
+      <div class="decision__card"><h4>Decision criterion: recall</h4><p>In screening, missing a sick patient is costlier than a false alarm.</p></div>
+      <span class="arrow">&rarr;</span>
+      <div class="decision__card decision__card--win"><h4>Champion: XGBoost</h4><p>Recall 92.86% — carried forward into SHAP/LIME interpretation.</p></div>
+    </div>
+    <div class="mockup" style="margin-top:32px;box-shadow:var(--shadow-card);">
+      <div class="mockup__body"><h4 style="margin:0 0 12px;font-size:0.9rem;font-weight:600;">Model comparison chart</h4>
+        <div class="ph" style="min-height:132px;"><span>placeholder — RF vs XGBoost metric chart · add asset</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · Validation framework system -->
+<section class="section section--panel">
+  <div class="container reveal">
+    <p class="kicker">Validation Framework System</p>
+    <div class="cards-3">
+      <div class="layer-card"><span class="n">Layer 01</span><h3>Stability</h3><p class="body body--justify">Computational stability testing via noise injection and the Jaccard index.</p></div>
+      <div class="layer-card"><span class="n">Layer 02</span><h3>Semantic</h3><p class="body body--justify">LLM-based semantic validation of feature-contribution direction against medical literature.</p></div>
+      <div class="layer-card"><span class="n">Layer 03</span><h3>Expert</h3><p class="body body--justify">Domain-expert review of the final artifacts before they are considered trustworthy.</p></div>
+    </div>
+    <p class="body" style="margin-top:30px;">Stability &rarr; Semantic &rarr; Expert: a reusable component set for validating XAI outputs on other projects, the same way a UI design system is reusable across screens.</p>
+  </div>
+</section>
+
+<!-- CS1 · 06 Artefacts & Output -->
+<section class="section section--panel">
+  <div class="container reveal">
+    <div class="section-head"><span class="num">06</span><h2>Artefacts &amp; Output</h2></div>
+    <div class="artefacts">
+      <div class="artefact">
+        <h4>SHAP Global Feature Importance</h4>
+        <div class="ph"><span>placeholder<br>plot export · add asset</span></div>
+        <div class="shap-legend"><span><i class="neg"></i>negative contribution</span><span><i class="pos"></i>positive contribution</span></div>
+      </div>
+      <div class="artefact">
+        <h4>SHAP Waterfall Plot</h4>
+        <p class="sub">local explanation, per-patient</p>
+        <div class="ph"><span>placeholder<br>plot export · add asset</span></div>
+        <div class="shap-legend"><span><i class="neg"></i>negative contribution</span><span><i class="pos"></i>positive contribution</span></div>
+      </div>
+      <div class="artefact">
+        <h4>LIME Local Explanation</h4>
+        <p class="sub">rule-based</p>
+        <div class="ph"><span>placeholder<br>plot export · add asset</span></div>
+      </div>
+    </div>
+    <p class="center-note">All artefacts and outputs of the research</p>
+    <div class="artefacts" style="margin-top:24px;">
+      <div class="artefact"><h4>Jaccard Stability Comparison</h4><p class="sub">SHAP vs LIME</p><div class="ph" style="min-height:320px;"><span>placeholder<br>chart export · add asset</span></div></div>
+      <div class="artefact"><h4>GPT-4 Semantic Alignment Scorecard</h4><div class="ph" style="min-height:340px;"><span>placeholder<br>scorecard export · add asset</span></div></div>
+      <div class="artefact"><h4>Domain Expert Review Summary</h4><div class="ph" style="min-height:340px;"><span>placeholder<br>review summary · add asset</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · 07 Model evaluation -->
+<section class="section">
+  <div class="container eval-grid reveal">
+    <div>
+      <span class="eyebrow">07</span>
+      <h2 style="margin:6px 0 16px;font-size:clamp(1.5rem,3.4vw,2rem);font-weight:600;max-width:16ch;">Model Evaluation &amp; Validation Testing</h2>
+      <p class="body body--justify" style="max-width:660px;">Validation was tested across four dimensions: model performance on an isolated test set, explanation stability under noise injection (20 patients &times; 30 iterations), semantic alignment via GPT-4, and review by a licensed biomedical domain expert.</p>
+      <p class="kicker" style="margin:28px 0 16px;">Result and Impact</p>
+      <div class="stats">
+        <div class="stat"><b>92.86%</b><span>XGBoost Recall (Champion Model)</span></div>
+        <div class="stat"><b>0.7184</b><span>SHAP Stability (Jaccard Index) vs LIME 0.6103</span></div>
+        <div class="stat"><b>&rho; = 0.7887</b><span>Cross-Method Consistency (Spearman, p &lt; 1e-6)</span></div>
+        <div class="stat"><b>3.05 / 5</b><span>GPT-4 Semantic Alignment (partially aligned, ~60% plausible)</span></div>
+      </div>
+      <p class="body body--justify" style="max-width:660px;"><strong>Impact:</strong> The framework revealed that a technically stable explanation isn&rsquo;t automatically a trustworthy one &mdash; surfacing specific features (cholesterol, vessel count) that need clinical caution before any XAI artifact is used to support real medical decisions.</p>
+    </div>
+    <div class="tilt-sheet">
+      <h4>Validation test plan &amp; results</h4>
+      <div class="ph"><span>placeholder<br>validation results sheet<br>add asset</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CS1 · 08 Conclusion -->
+<section class="section">
+  <div class="container split reveal">
+    <div class="split__aside"><span class="num">08</span><h2>Conclusion</h2></div>
+    <p class="body body--justify">This research shows that evaluating a medical ML model requires more than accuracy &mdash; it requires layered scrutiny of the explanation itself: is it stable, is it consistent across methods, is it medically plausible, and does a domain expert agree. The project demonstrates both technical ML competency and the judgment to know when a result is &ldquo;good enough to publish&rdquo; versus &ldquo;good enough to deploy&rdquo; &mdash; two very different bars.</p>
+  </div>
+</section>
+
+<!-- ══════════════════ CASE STUDY 2 — TITLE ══════════════════ -->
+<section class="cs-hero cs-hero--browser" id="case-study-2">
+  <div class="container cs-hero__inner">
+    <div>
+      <span class="eyebrow-row"><img class="spark" src="assets/sparkle.svg" alt="">Data Analyst Internship, PT Vinix Seven Aurum (VINIX7) &middot; Security Analytics</span>
+      <h2>Network Intrusion Detection &amp; Risk Scoring</h2>
+    </div>
+    <div class="cs-hero__art reveal">
+      <div class="mockup">
+        <div class="mockup__bar"><i></i><i></i><i></i><span class="url"></span></div>
+        <div class="mockup__body"><div class="ph" style="min-height:360px;"><span>placeholder<br>Looker Studio dashboard screenshot<br>add asset</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS2 · 01 Project Overview -->
+<section class="section">
+  <div class="container split reveal">
+    <div class="split__aside"><span class="num">01</span><h2>Project Overview</h2></div>
+    <div>
+      <div class="field"><span class="field__label">Background case</span><p class="body body--justify">A security team receiving 47,700+ network connection logs per cycle can&rsquo;t review them manually. Worse, a raw classifier that flags 46.6% of all traffic as anomalous produces alert fatigue &mdash; analysts start ignoring warnings, including real ones. The challenge wasn&rsquo;t just detection; it was making detection operationally usable.</p></div>
+      <div class="field"><span class="field__label">Project Goals</span><p class="body body--justify">Build an end-to-end system that classifies network traffic as normal or anomalous, then translates that classification into a prioritized, actionable risk score &mdash; reducing the reviewable alert volume to a size a human team can realistically handle.</p></div>
+      <div class="field"><span class="field__label">My Role</span><p class="body">Data Analyst</p></div>
+      <div class="field"><span class="field__label">My Responsibilities</span><p class="body">Data Pipeline Engineering, Model Development, Risk Scoring System, Dashboard Engineering</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CS2 · 02 Understand context -->
+<div class="banner"><div class="container"><h2>Understand context of the problem</h2></div></div>
+<section class="section">
+  <div class="container problem-grid reveal">
+    <div>
+      <span class="eyebrow">02</span>
+      <h3 style="margin:6px 0 16px;font-size:clamp(1.5rem,3.4vw,2rem);font-weight:600;">Main Problem</h3>
+      <p class="body body--justify">Without prioritization, security teams face a binary choice: investigate everything (impossible at scale) or investigate nothing systematically (dangerous). The system needs a middle layer that ranks urgency, not just detects anomalies.</p>
+    </div>
+    <div class="problem-quote">
+      <span class="tag-label">Problem</span>
+      <blockquote>&ldquo;46.6% of traffic flagged as anomalous is not a usable security signal &mdash; it&rsquo;s noise that overwhelms the team it&rsquo;s meant to help.&rdquo;</blockquote>
+      <span class="chip-cta">How to solve this problem?</span>
+    </div>
+  </div>
+</section>
+
+<!-- CS2 · 03 Key dashboard pages -->
+<div class="banner"><div class="container"><h2>Key dashboard pages and features</h2></div></div>
+<section class="section">
+  <div class="container reveal">
+    <div class="split">
+      <div class="split__aside"><span class="num">03</span><h2>Key Pages &amp; Features</h2></div>
+      <div class="tag-row">
+        <span class="tag tag--fill">Executive Overview</span>
+        <span class="tag tag--fill">Traffic Analysis</span>
+        <span class="tag tag--fill">ML &amp; Threat Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS2 · Dashboard pages 1-2-3 -->
+<section class="section section--soft">
+  <div class="container reveal">
+    <div class="dash-pages">
+      <div>
+        <span class="field__label" style="font-size:1.5rem;">Page: Executive Overview</span>
+        <p class="body body--justify" style="margin:14px 0;">Key-indicator summary, designed so non-technical stakeholders can read the state of the network at a glance.</p>
+        <div class="stats" style="margin:0;">
+          <div class="stat"><b>25,192</b><span>Total Traffic</span></div>
+          <div class="stat"><b>2,520</b><span>Model-Flagged Anomaly Traffic</span></div>
+          <div class="stat"><b>23.14</b><span>Average Risk Score</span></div>
+          <div class="stat"><b>76.86</b><span>Security Health Index</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="field__label" style="font-size:1.5rem;">Page: Traffic Analysis</span>
+        <p class="body body--justify" style="margin:14px 0;">Protocol distribution (TCP/UDP/ICMP), connection-flag distribution, top 10 services, and anomaly rate per service &mdash; for deeper investigation by analysts.</p>
+        <div class="tag-row">
+          <span class="tag">Protocol distribution</span>
+          <span class="tag">Connection flag distribution</span>
+          <span class="tag">Top 10 service</span>
+          <span class="tag">Anomaly rate per service</span>
+        </div>
+      </div>
+    </div>
+    <div class="dash-pages" style="margin-top:40px;">
+      <div>
+        <span class="field__label" style="font-size:1.5rem;">Page: ML &amp; Threat Analysis</span>
+        <p class="body body--justify" style="margin:14px 0 0;">Model feature importance (src_bytes, dst_bytes, flag), model comparison across 5 algorithms, risk score distribution, and protocol priority breakdown.</p>
+      </div>
+      <div class="tag-row" style="align-content:flex-start;">
+        <span class="tag">Feature importance</span>
+        <span class="tag">Model comparison (5 algorithms)</span>
+        <span class="tag">Risk score distribution</span>
+        <span class="tag">Protocol priority breakdown</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS2 · 04 Final design -->
+<section class="section section--panel">
+  <div class="container reveal">
+    <div class="section-head"><span class="num">04</span><h2>Final Design</h2></div>
+    <p class="kicker" style="color:var(--muted);">ALL PAGES</p>
+    <div class="mock-grid">
+      <div class="mockup"><div class="mockup__bar"><i></i><i></i><i></i><span class="label">Executive Overview</span></div><div class="mockup__body"><div class="ph" style="min-height:300px;"><span>placeholder<br>Executive Overview page<br>add asset</span></div></div></div>
+      <div class="mockup"><div class="mockup__bar"><i></i><i></i><i></i><span class="label">Traffic Analysis</span></div><div class="mockup__body"><div class="ph" style="min-height:300px;"><span>placeholder<br>Traffic Analysis page<br>add asset</span></div></div></div>
+    </div>
+    <div class="mock-grid mock-grid--wide" style="margin-top:24px;">
+      <div class="mockup"><div class="mockup__bar"><i></i><i></i><i></i><span class="label">ML &amp; Threat Analysis</span></div><div class="mockup__body"><div class="ph" style="min-height:420px;"><span>placeholder<br>ML &amp; Threat Analysis page<br>add asset</span></div></div></div>
+    </div>
+    <div class="data-flow-panel">
+      <div class="steps steps--six">
+        <div class="step"><span class="n">01</span><h4>Raw Logs</h4></div>
+        <div class="step"><span class="n">02</span><h4>Preprocessing</h4></div>
+        <div class="step"><span class="n">03</span><h4>Random Forest Classification</h4></div>
+        <div class="step step--soft"><span class="n">04</span><h4>Isolation Forest Risk Scoring</h4></div>
+        <div class="step step--soft"><span class="n">05</span><h4>Priority Mapping</h4><p>P1&ndash;P4</p></div>
+        <div class="step step--solid"><span class="n">06</span><h4>Dashboard</h4></div>
+      </div>
+      <div class="ph" style="min-height:200px;margin-top:24px;"><span>placeholder — data flow diagram export · add asset</span></div>
+      <h3>Main Data Flow</h3>
+    </div>
+  </div>
+</section>
+
+<!-- CS2 · 05 Building the system -->
+<section class="section section--panel">
+  <div class="container reveal">
+    <div class="section-head"><span class="num">05</span><h2>Building The System</h2></div>
+    <p class="body" style="font-size:1.25rem;color:var(--muted);margin-bottom:20px;">With Python &amp; Looker Studio</p>
+    <div class="build-grid">
+      <div>
+        <p class="body body--justify" style="margin-bottom:24px;">Built with Python (pandas, NumPy, scikit-learn) for the ML pipeline and Looker Studio for the dashboard layer. Random Forest was benchmarked against Logistic Regression, Decision Tree, KNN, and Gradient Boosting on the same data split &mdash; reaching 99.80% accuracy and 99.96% recall, with consistent high F1 scores across all five models confirming the data was genuinely separable rather than the result of overfitting one model.</p>
+        <div class="build-card">
+          <span class="field__label">Five algorithms, same data split</span>
+          <div class="tag-row">
+            <span class="tag tag--solid">Random Forest — champion</span>
+            <span class="tag">Logistic Regression</span>
+            <span class="tag">Decision Tree</span>
+            <span class="tag">KNN</span>
+            <span class="tag">Gradient Boosting</span>
+          </div>
+          <div class="stats" style="margin:0;">
+            <div class="stat"><b>99.80%</b><span>Random Forest accuracy</span></div>
+            <div class="stat"><b>99.96%</b><span>Random Forest recall</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup mockup--dark">
+        <div class="mockup__bar"><span class="label">intrusion_detection.ipynb</span></div>
+        <div class="mockup__body"><div class="ph" style="min-height:440px;"><span>placeholder<br>Jupyter notebook screenshot<br>add asset</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CS2 · 06 Final project -->
+<section class="section">
+  <div class="container reveal">
+    <div class="section-head"><span class="num">06</span><h2>Final Project</h2></div>
+    <div class="mockup">
+      <div class="mockup__bar"><i></i><i></i><i></i><span class="url"></span></div>
+      <div class="mockup__body"><div class="ph" style="min-height:420px;"><span>placeholder<br>published dashboard screenshot<br>add asset</span></div></div>
+    </div>
+    <div class="url-cards">
+      <div class="url-card url-card--a"><span class="k">Dashboard URL:</span><span class="v placeholder">[Looker Studio dashboard link — add when published]</span></div>
+      <div class="url-card url-card--b"><span class="k">Project on Github:</span><span class="v placeholder">[GitHub repo link — add when public]</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SELECTED PROJECTS ══════════════════ -->
+<section class="section section--soft" id="projects">
+  <div class="container">
+    <div class="count-head reveal"><span class="count-badge">9</span><h2>Selected Projects</h2></div>
+
+    <!-- flagship -->
+    <article class="flagship reveal">
+      <div class="flagship__head">
+        <h3>GroundedRAG — Citation-Grounded Aquaculture Assistant</h3>
+        <span class="live-badge"><i></i>Live</span>
+      </div>
+      <span class="flagship__meta">LLM / RAG &middot; Applied AI</span>
+      <p class="lead">A retrieval-augmented assistant that answers aquaculture questions with citations from 7 FAO/CGIAR technical documents (840 pages, 3,107 chunks) &mdash; and explicitly abstains (&ldquo;I don&rsquo;t have enough information&rdquo;) when the corpus can&rsquo;t support an answer, instead of hallucinating.</p>
+      <div class="metrics">
+        <div class="metric"><b>95.2%</b><span>Faithfulness</span></div>
+        <div class="metric"><b>91.4%</b><span>Recall@k</span></div>
+        <div class="metric"><b>4.8%</b><span>Hallucination rate</span></div>
+        <div class="metric"><b>100%</b><span>Abstention accuracy</span></div>
+        <div class="metric"><b>0.79</b><span>MRR</span></div>
+      </div>
+      <span class="flagship__meta">Metrics measured on a 43-question gold set</span>
+      <div class="tag-row">
+        <span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">Chroma</span>
+        <span class="tag">Docker</span><span class="tag">GitHub Actions CI eval gate</span><span class="tag">Streamlit</span>
+      </div>
+      <div class="btns">
+        <a class="btn" href="https://github.com/leesnar/GroundedRAG" target="_blank" rel="noopener">GitHub — github.com/leesnar/GroundedRAG</a>
+        <a class="btn" href="https://huggingface.co/spaces/snarrr/groundedRAG" target="_blank" rel="noopener">Live demo — huggingface.co/spaces/snarrr/groundedRAG</a>
+      </div>
+    </article>
+
+    <!-- Data Engineering -->
+    <span class="cat-title reveal">Data Engineering</span>
+    <hr class="cat-rule">
+    <div class="proj-grid reveal">
+      <article class="proj">
+        <h4>ETL Data Pipeline</h4>
+        <p>Extract-transform-load pipeline in Python with unit tests (pytest + coverage), scheduled cron runs, and a Google Sheets API sink.</p>
+        <div class="tag-row"><span class="tag">Python</span><span class="tag">pytest</span><span class="tag">ETL</span><span class="tag">Google Sheets API</span></div>
+      </article>
+    </div>
+
+    <!-- NLP -->
+    <span class="cat-title reveal">Natural Language Processing</span>
+    <hr class="cat-rule">
+    <div class="proj-grid reveal">
+      <article class="proj">
+        <h4>App Review Sentiment Analysis</h4>
+        <p>Scraped Tokopedia reviews, then classified sentiment (positive / negative / neutral) with TF-IDF and a deep learning model. &gt;85% test accuracy.</p>
+        <div class="tag-row"><span class="tag">NLP</span><span class="tag">TensorFlow</span><span class="tag">Web Scraping</span></div>
+        <a class="repo" href="https://github.com/leesnar/proyek-analisis-sentimen" target="_blank" rel="noopener">github.com/leesnar/proyek-analisis-sentimen</a>
+      </article>
+    </div>
+
+    <!-- Computer Vision & Deep Learning -->
+    <span class="cat-title reveal">Computer Vision &amp; Deep Learning</span>
+    <hr class="cat-rule">
+    <div class="proj-grid reveal">
+      <article class="proj">
+        <h4>Pilahin — Real-Time Waste Classifier</h4>
+        <span class="meta">Capstone, Coding Camp 2025</span>
+        <p>Led ML integration for a real-time CNN classifier (organik / non-organik / B3) via live camera. Deployed to SavedModel, TF.js, and TFLite. React frontend, Flask backend.</p>
+        <div class="tag-row"><span class="tag">TensorFlow</span><span class="tag">CNN</span><span class="tag">React</span><span class="tag">Flask</span><span class="tag">TFLite</span></div>
+        <a class="repo" href="https://github.com/ArayaFeisa/Pilahin" target="_blank" rel="noopener">github.com/ArayaFeisa/Pilahin — team repo</a>
+      </article>
+      <article class="proj">
+        <h4>Food Image Classifier</h4>
+        <p>MobileNetV2 transfer learning on Food-101. 95.31% test accuracy, exported to TFLite and TensorFlow.js.</p>
+        <div class="tag-row"><span class="tag">TensorFlow</span><span class="tag">MobileNetV2</span><span class="tag">Transfer Learning</span></div>
+        <a class="repo" href="https://github.com/leesnar/proyek-klasifikasi-gambar" target="_blank" rel="noopener">github.com/leesnar/proyek-klasifikasi-gambar</a>
+      </article>
+    </div>
+
+    <!-- Data Analysis, Recommenders & Predictive Modeling -->
+    <span class="cat-title reveal">Data Analysis, Recommenders &amp; Predictive Modeling</span>
+    <hr class="cat-rule">
+    <div class="proj-grid reveal">
+      <article class="proj">
+        <h4>Air Quality Analysis + Live Dashboard</h4>
+        <p>EDA on Beijing Wanshouxigong station data (2013&ndash;2017): PM2.5 trends, seasonality, pollutant correlations. Shipped as a live Streamlit dashboard.</p>
+        <div class="tag-row"><span class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">EDA</span></div>
+        <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px;align-items:flex-start;">
+          <span class="ph" style="min-height:auto;padding:9px 13px;border-radius:8px;"><span>Live demo — add Streamlit link</span></span>
+          <a class="repo" style="margin-top:0;" href="https://github.com/leesnar/submission-proyek-analisis-data" target="_blank" rel="noopener">github.com/leesnar/submission-proyek-analisis-data</a>
+        </div>
+      </article>
+      <article class="proj">
+        <h4>Movie Recommendation System</h4>
+        <p>Content-based (TF-IDF + cosine similarity) and collaborative filtering built side by side for comparison.</p>
+        <div class="tag-row"><span class="tag">scikit-learn</span><span class="tag">TF-IDF</span></div>
+        <a class="repo" href="https://github.com/leesnar/proyek-sistem-rekomendasi" target="_blank" rel="noopener">github.com/leesnar/proyek-sistem-rekomendasi</a>
+      </article>
+      <article class="proj">
+        <h4>Diabetes Risk Classification</h4>
+        <p>Compared KNN, Random Forest, and AdaBoost on the PIMA dataset; Glucose, BMI, and Age as top predictors.</p>
+        <div class="tag-row"><span class="tag">scikit-learn</span><span class="tag">KNN</span><span class="tag">AdaBoost</span></div>
+        <a class="repo" href="https://github.com/leesnar/project-predictive-analytics" target="_blank" rel="noopener">github.com/leesnar/project-predictive-analytics</a>
+      </article>
+    </div>
+
+    <!-- Quantitative & Software Engineering (bonus) -->
+    <span class="cat-title dim reveal">Quantitative &amp; Software Engineering <em style="font-weight:500;font-size:1rem;">(bonus / optional)</em></span>
+    <hr class="cat-rule faint">
+    <div class="proj-grid reveal">
+      <article class="proj proj--dim">
+        <div class="proj__head">
+          <h4>Smart Money Concepts Expert Advisor</h4>
+          <span class="badge-bonus">Bonus</span>
+        </div>
+        <p>Automated trading system in MQL5 with a companion Pine Script indicator &mdash; a multi-timeframe state machine with risk-percent position sizing and three execution modes.</p>
+        <div class="tag-row"><span class="tag" style="color:var(--muted);border-color:#ececec;">MQL5</span><span class="tag" style="color:var(--muted);border-color:#ececec;">Pine Script v5</span><span class="tag" style="color:var(--muted);border-color:#ececec;">State Machine</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CLOSING ══════════════════ -->
+<section class="closing" id="contact">
+  <div class="container closing__inner">
+    <div class="closing__text">
+      <h2>Thanks...<br>Portfolio</h2>
+      <span class="role">AI/ML Engineer &amp; Data Engineer</span>
+      <h3>My Contact</h3>
+      <ul class="contact-list" style="list-style:none;margin:0;padding:0;">
+        <li><a href="mailto:lesnartambun1808@gmail.com"><span class="ico ico--email"></span>lesnartambun1808@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/lesnar-tambun" target="_blank" rel="noopener"><span class="ico ico--linkedin"></span>Lesnar Tambun</a></li>
+        <li><a href="https://instagram.com/lee.snar" target="_blank" rel="noopener"><span class="ico ico--instagram"></span>@lee.snar</a></li>
+      </ul>
+    </div>
+    <div class="closing__aside">
+      <div class="avatar" role="img" aria-label="Portrait of Lesnar Tambun">
+        <span class="avatar__monogram">LT</span>
+        <span class="avatar__photo"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Progressive scroll-reveal. The .js gate means content is visible by default;
+  // only when this runs does the hidden→revealed animation apply.
+  (function () {
+    var root = document.documentElement;
+    root.classList.add('js');
+    var els = document.querySelectorAll('.reveal');
+    function revealAll() { els.forEach(function (el) { el.classList.add('is-in'); }); }
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) { revealAll(); return; }
+    var fired = false;
+    var io = new IntersectionObserver(function (entries) {
+      fired = true;
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    els.forEach(function (el) { io.observe(el); });
+    // Safety net: if the observer never fires (e.g. non-compositing context),
+    // reveal everything so content is never left hidden.
+    setTimeout(function () { if (!fired) revealAll(); }, 1500);
+  })();
+</script>
+</body>
+</html>
