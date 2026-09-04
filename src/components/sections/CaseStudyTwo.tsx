@@ -274,17 +274,25 @@ export function CaseStudyTwo() {
               <span className="k">Dashboard URL:</span>
               <a
                 className="v"
-                href="https://datastudio.google.com/u/0/reporting/9c6d61ca-328c-4efc-bd24-28e73221b30f"
+                href="https://datastudio.google.com/reporting/84f35273-54e0-43ab-8299-20e5a075e41f"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="hover"
               >
-                https://datastudio.google.com/u/0/reporting/9c6d61ca-328c-4efc-bd24-28e73221b30f
+                https://datastudio.google.com/u/0/reporting/84f35273-54e0-43ab-8299-20e5a075e41f
               </a>
             </Reveal>
             <Reveal className="url-card url-card--b" index={1}>
               <span className="k">Project on Github:</span>
-              <span className="v placeholder">[GitHub repo link — ]</span>
+                            <a
+                className="v"
+                href="https://github.com/leesnar/network-intrusion-detection"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+              >
+                https://github.com/leesnar/network-intrusion-detection
+              </a>
             </Reveal>
           </div>
         </Container>
