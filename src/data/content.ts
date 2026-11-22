@@ -1,9 +1,4 @@
-/**
- * Site content as typed data. Copy is reproduced verbatim from the original
- * portfolio — headings, prose, stat labels, tags, and links are unchanged.
- * Repeated, array-shaped content (stats, pipeline steps, projects) lives here
- * so new entries can be added without touching component markup.
- */
+/** Shared profile content. Inactive legacy sections still use the compatibility data at the end. */
 import { asset } from "../lib/asset";
 
 
@@ -32,29 +27,85 @@ export type ProjectCategory = {
   projects: ProjectItem[];
 };
 
-export const NAV_LINKS: { id: string; label: string }[] = [
-  { id: "intro", label: "About" },
-  { id: "case-study-1", label: "XAI Framework" },
-  { id: "case-study-2", label: "Intrusion Detection" },
+export const NAV_LINKS = [
+  { id: "top", label: "Home" },
   { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "intro", label: "About" },
   { id: "contact", label: "Contact" },
 ];
 
 export const CONTACT = {
   email: "lesnartambun1808@gmail.com",
   linkedin: { label: "Lesnar Tambun", href: "https://www.linkedin.com/in/lesnar-tambun" },
+  github: { label: "GitHub", href: "https://github.com/leesnar" },
   instagram: { label: "@lee.snar", href: "https://instagram.com/lee.snar" },
 };
 
+export const cvDownloadUrl = asset("cv/lesnar-tambun-cv.pdf");
+
 export const HERO = {
-  name: "I’m Lesnar,",
-  role: "AI/ML Engineer & Data Engineer",
-  quote:
-    "“Think of me as the bridge between raw data and decisions you can trust — accuracy on one hand, explainability on the other.”",
+  name: "Lesnar Tambun",
+  role: "Data Analytics · Business Intelligence · Data Science",
+  quote: "I analyze data, build dashboards, and test how reliably models explain their predictions.",
 };
 
 export const INTRO =
-  "As an AI/ML Engineer and Data Engineer, I turn messy data into evaluated, explainable systems that people can actually rely on. My work spans model development, pipeline engineering, and validation — from training a classifier to proving its explanation holds up under scrutiny. Every project starts with the problem, not the algorithm, and follows a structured process from data understanding to deployment. I believe the best ML systems are the ones where accuracy and trustworthiness are treated as equally important.";
+  "I start by asking who needs the answer and what decision they face. I inspect the data, choose a method that fits the question, and show the assumptions and limitations alongside the findings.";
+
+type CareerItem = {
+  title: string;
+  organization: string;
+  dates?: string;
+  bullets: string[];
+  work?: LinkItem;
+};
+
+export const CAREER: CareerItem[] = [
+  {
+    title: "Data Analyst Intern",
+    organization: "PT Vinix Seven Aurum (VINIX7)",
+    dates: "April–June 2026",
+    bullets: ["Analyzed labeled network connections and compared classification models.", "Developed a three-page Looker Studio dashboard within the internship team."],
+    work: { label: "Internship case study", href: asset("projects/network-intrusion-risk-scoring/") },
+  },
+  {
+    title: "Bachelor of Computer Science",
+    organization: "Universitas Brawijaya",
+    dates: "September 2022–July 2026",
+    bullets: ["GPA 3.72 / 4.00", "Undergraduate thesis on validating explanations of heart-disease predictions."],
+    work: { label: "Thesis case study", href: asset("projects/xai-validation-framework/") },
+  },
+  {
+    title: "Independent Study",
+    organization: "Dicoding / DBS Foundation",
+    bullets: ["Analyzed hourly air-quality measurements and built an interactive dashboard."],
+    work: { label: "Air Quality case study", href: asset("projects/air-quality-analysis/") },
+  },
+];
+
+export const CAPABILITIES = [
+  {
+    title: "Data Analytics",
+    body: "Data cleaning, exploratory analysis, and working knowledge of SQL.",
+    links: [{ label: "Air Quality Analysis", href: "#work-air-quality" }, { label: "ETL Data Pipeline", href: "#support-etl-data-pipeline" }],
+  },
+  {
+    title: "Business Intelligence",
+    body: "Metric definitions, priority scoring, and dashboard design in Looker Studio.",
+    links: [{ label: "Network risk dashboard", href: "#work-vinix7" }],
+  },
+  {
+    title: "Data Science",
+    body: "Classification, model evaluation, and explanation stability with SHAP and LIME.",
+    links: [{ label: "XAI Validation Framework", href: "#work-xai" }],
+  },
+];
+
+export const CREDENTIALS = [
+  { title: "Google Data Analytics", date: "September 8, 2026", isoDate: "2026-09-08", href: "https://coursera.org/verify/professional-cert/2AOZ6T9AINLX" },
+  { title: "Google Advanced Data Analytics", date: "September 9, 2026", isoDate: "2026-09-09", href: "https://coursera.org/verify/professional-cert/68LYI7MFG8MB" },
+];
 
 export const TEASERS: Teaser[] = [
   {
@@ -62,15 +113,15 @@ export const TEASERS: Teaser[] = [
     blurb:
       "a research framework that audits SHAP and LIME explanations instead of trusting them blindly — combining stability testing, LLM-based semantic validation, and clinician review for heart disease classification.",
     ph: "placeholder — SHAP summary plot\nadd asset",
-    src: asset("/assets/xai-framework-card-asset.png"),
+    src: /* @__PURE__ */ asset("/assets/xai-framework-card-asset.png"),
     alt: "SHAP summary plot for the heart-disease XAI model",
   },
   {
     title: "Network Intrusion Detection & Risk Scoring",
     blurb:
-      "a machine learning system that turns 47,700 raw network logs into a prioritized threat dashboard — cutting the security team’s actionable alert queue by 98%.",
+      "a team project that scored 25,192 benchmark connections and displayed their priority bands in Looker Studio.",
     ph: "placeholder — Looker Studio dashboard\nadd asset",
-    src: asset("/assets/network-intrusion-card-asset.png"),
+    src: /* @__PURE__ */ asset("/assets/network-intrusion-card-asset.png"),
     alt: "Network intrusion detection threat dashboard in Looker Studio",
   },
 ];
@@ -92,7 +143,6 @@ export const CS1_EVAL_STATS: StatItem[] = [
   { value: "92.86%", label: "XGBoost Recall (Champion Model)" },
   { value: "0.7184", label: "SHAP Stability (Jaccard Index) vs LIME 0.6103" },
   { value: "ρ = 0.7887", label: "Cross-Method Consistency (Spearman, p < 1e-6)" },
-  { value: "3.05 / 5", label: "GPT-4 Semantic Alignment (partially aligned, ~60% plausible)" },
 ];
 
 /* ---- Case Study 2 — Network Intrusion Detection & Risk Scoring ---- */
@@ -114,8 +164,8 @@ export const CS2_DATA_FLOW: StepItem[] = [
 ];
 
 export const CS2_BUILD_STATS: StatItem[] = [
-  { value: "99.80%", label: "Random Forest accuracy" },
-  { value: "99.96%", label: "Random Forest recall" },
+  { value: "99.80%", label: "Random Forest accuracy on 5,039 validation records" },
+  { value: "99.96%", label: "Normal-class Random Forest recall on 5,039 validation records" },
 ];
 
 /* ---- Selected projects ---- */
@@ -158,7 +208,7 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
       {
         title: "App Review Sentiment Analysis",
         body:
-          "Scraped Tokopedia reviews, then classified sentiment (positive / negative / neutral) with TF-IDF and a deep learning model. >85% test accuracy.",
+          "Scraped Tokopedia reviews, then classified sentiment (positive / negative / neutral) with TF-IDF and a deep learning model.",
         tags: ["NLP", "TensorFlow", "Web Scraping"],
         repo: { label: "github.com/leesnar/proyek-analisis-sentimen", href: "https://github.com/leesnar/proyek-analisis-sentimen" },
       },
@@ -171,14 +221,14 @@ export const PROJECT_CATEGORIES: ProjectCategory[] = [
         title: "Pilahin — Real-Time Waste Classifier",
         meta: "Capstone, Coding Camp 2025",
         body:
-          "Led ML integration for a real-time CNN classifier (organik / non-organik / B3) via live camera. Deployed to SavedModel, TF.js, and TFLite. React frontend, Flask backend.",
+          "Integrated browser predictions as the team’s model deployer for a real-time CNN classifier (organik / non-organik / B3) via live camera. Deployed to SavedModel, TF.js, and TFLite. React frontend, Flask backend.",
         tags: ["TensorFlow", "CNN", "React", "Flask", "TFLite"],
         repo: { label: "github.com/ArayaFeisa/Pilahin — team repo", href: "https://github.com/ArayaFeisa/Pilahin" },
       },
       {
         title: "Food Image Classifier",
         body:
-          "MobileNetV2 transfer learning on Food-101. 95.31% test accuracy, exported to TFLite and TensorFlow.js.",
+          "MobileNetV2 transfer learning on Food-101. The classifier was exported to TFLite and TensorFlow.js.",
         tags: ["TensorFlow", "MobileNetV2", "Transfer Learning"],
         repo: { label: "github.com/leesnar/proyek-klasifikasi-gambar", href: "https://github.com/leesnar/proyek-klasifikasi-gambar" },
       },
