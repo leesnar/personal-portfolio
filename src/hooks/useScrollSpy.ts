@@ -1,49 +1,57 @@
 import { useEffect, useState } from "react";
 
-/**
- * Returns the id of the section currently occupying the top of the viewport.
- * Scroll-position based (rAF-throttled) rather than IntersectionObserver, so it
- * stays correct after programmatic anchor jumps and reads reliably under Lenis,
- * which dispatches native scroll events. `ids` must be in DOM order.
- */
-export function useScrollSpy(ids: string[], topOffset = 80): string | null {
+/** Entries follow the document order. The last section may be shorter than the viewport. */
+export function useScrollSpy(ids: string[], topOffset = 76): string | null {
   const [active, setActive] = useState<string | null>(null);
-  const key = ids.join(",");
-
+  const orderedIds = ids.join(",");
   useEffect(() => {
-    let raf = 0;
-    const line = topOffset + 1;
-
-    const compute = () => {
-      raf = 0;
-      let current: string | null = null;
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        // the last section whose top has crossed the offset line is the active one
-        if (el.getBoundingClientRect().top <= line) current = id;
+    if (!orderedIds) return;
+    const targets = orderedIds.split(",").map(id => document.getElementById(id)).filter((el): el is HTMLElement => Boolean(el));
+    let frame = 0;
+    let requested = location.hash.slice(1);
+    function compute() {
+      frame = 0;
+      const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+      let current = targets[0];
+      for (const target of targets) {
+        if (atBottom || target.getBoundingClientRect().top <= topOffset + 2) current = target;
       }
-      setActive(current);
+      // Two short final sections can share the same maximum scroll position.
+      const selected = targets.find(target => target.id === requested);
+      if (atBottom && selected) {
+        const boundary = selected.getBoundingClientRect();
+        if (boundary.top >= topOffset - 2 && boundary.top < innerHeight) current = selected;
+      }
+      setActive(current?.id ?? null);
+    }
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(compute); };
+    const onHash = () => { requested = location.hash.slice(1); schedule(); };
+    const onManualScroll = () => { requested = ""; schedule(); };
+    const onKey = (event: KeyboardEvent) => {
+      if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) onManualScroll();
     };
-
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(compute);
+    const onAnchor = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
+      if (link) { requested = link.hash.slice(1); schedule(); }
     };
-
     compute();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    // `scrollend` guarantees a final recompute at the exact resting position,
-    // which a throttled scroll listener can miss after a long programmatic jump
-    window.addEventListener("scrollend", compute, { passive: true });
+    window.addEventListener("hashchange", onHash);
+    window.addEventListener("wheel", onManualScroll, { passive: true });
+    window.addEventListener("touchmove", onManualScroll, { passive: true });
+    window.addEventListener("keydown", onKey);
+    document.addEventListener("click", onAnchor);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      window.removeEventListener("scrollend", compute);
-      if (raf) cancelAnimationFrame(raf);
+      cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", onHash);
+      window.removeEventListener("wheel", onManualScroll);
+      window.removeEventListener("touchmove", onManualScroll);
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onAnchor);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key, topOffset]);
-
+  }, [orderedIds, topOffset]);
   return active;
 }

@@ -1,10 +1,15 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { studyRoutes } from "./src/data/studyRoutes";
 
-// https://vite.dev/config/
 export default defineConfig({
-  // served from https://leesnar.github.io/personal-portfolio/ — runtime paths
-  // into public/ go through src/lib/asset.ts to pick this up
   base: "/personal-portfolio/",
+  publicDir: "site-public",
+  appType: "mpa",
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      input: ["index.html", ...studyRoutes.map(({ slug }) => `projects/${slug}/index.html`)],
+    },
+  },
 });
